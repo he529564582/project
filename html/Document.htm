@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)file:///Users/he-mac/Documents/any/html/0401-08.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ol>
+        <li title="abc">A</li>
+        <li title="abc">B</li>
+        <li title="abc">C</li>
+    </ol>
+    <script>
+        var a = document.getElementsByTagName("li");
+        for(var i=0; i<a.length;i++){
+            alert(a[i].getAttribute("title"));
+        }
+    </script>
+
+</body></html>
