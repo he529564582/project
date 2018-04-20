@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        .important{
+            font-weight: bold;
+            font-size:3em;
+        }
+        .blue
+        {
+            color:blue;
+            }
+        div{
+            width: 100px;
+            height: 100px;
+            border: 1px red solid;
+            margin: 5px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".b1").click(function(){
+                $(".d1").css('color','red');
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="d1">111111</div>
+    <div class="d2">2</div>
+    <button class="b1">按钮1</button>
+    <button class="b2">按钮2</button>
+</body>
+</html>

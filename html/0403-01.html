@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = 100;
+        var b = NaN;
+        switch (true) {
+            case isNaN(a) || isNaN(b):
+         //console.log('NaNNaN');
+         //document.write("NaNNaN");
+         alert("NaNNaN")
+            break;
+            case a === b:
+         //console.log(0);
+         document.write(0);
+            break;
+            case a < b:
+         //console.log(-1);
+         document.write(-1);
+            break;
+            default:
+         //console.log(1);
+         document.write(1);
+}
+    </script>
+</body>
+</html>

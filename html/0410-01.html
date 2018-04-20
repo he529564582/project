@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        .d1{
+            background-color: green;
+            margin-top: 100px;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".b1").click(function(){
+                alert($(".d1").text());
+            });
+            $(".b2").click(function(){
+                alert( $(".d1").html());
+            });
+            $(".b3").click(function(){
+                alert( $(".i1").val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="b1">按钮1</button>
+    <button class="b2">按钮2</button>
+    <button class="b3">按钮3</button>
+    <div class="d1">  https://code.jquery.com/jquery-1.10.2.js</div></br>
+    <span>密码</span><input class="i1" type="text" name="aaa" id="text" value="123456">
+</body>
+</html>

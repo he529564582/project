@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        div{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+            margin: 10px;  
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            var txt="";
+            $(".b1").click(function(){
+            txt+=$(".d1").innerWidth();
+            });
+           $(".b1").click(function(){
+            txt+=$(".d1").innerHeight();
+            $(".d1").html(txt);
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="b1">按钮</button>
+    <div class="d1"></div>
+</body>
+</html>
