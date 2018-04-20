@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        <li>
+                <a href="../pic/images.jpeg "  onclick="showPic(this);return false;" title="red">click me</a>
+        </li>
+        <li>
+                <img  id="placeholder" src="../pic//images.jpeg" alt="">
+        </li>
+    </ul>
+    <script>
+        function showPic(whichpic){
+            var a = whichpic.getAttribute("href");
+            var b =document.getElementById("placeholder");
+            placeholder.setAttribute("src","a");
+        }
+    </script>
+</body>
+</html>
