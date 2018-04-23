@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #txt{
+    height:400px;
+    width:600px;
+	border:#333 solid 1px;
+	padding:5px;}
+p{
+	line-height:18px;
+	text-indent:2em;}
+    </style>
+</head>
+<body>
+        <h2 id="con">JavaScript课程</H2>
+            <div id="txt"> 
+               <h5>JavaScript为网页添加动态效果并实现与用户交互的功能。</h5>
+                  <p>1. JavaScript入门篇，让不懂JS的你，快速了解JS。</p>
+                  <p>2. JavaScript进阶篇，让你掌握JS的基础语法、函数、数组、事件、内置对象、BOM浏览器、DOM操作。</p>
+                  <p>3. 学完以上两门基础课后，在深入学习JavaScript的变量作用域、事件、对象、运动、cookie、正则表达式、ajax等课程。</p>
+            </div>
+            <button type="button" onclick="changeColor()">1</button>
+            <button type="button" onclick="changeWidth()">2</button>
+            <button type="button" onclick="displayNone()">3</button>
+            <button type="button" onclick="displayBlock()">4</button>
+            <button type="button" onclick="">5</button>
+</body>
+<script>
+    function changeColor(){
+        var cc =document.getElementById("txt");
+        cc.style.color = "red";
+    }
+    function changeWidth(){
+        var cw =document.getElementById("txt");
+        cw.style.width="300px";
+    }
+    function displayNone(){
+        var dN =document.getElementById("txt");
+        dN.style.display="none";
+    }
+    function displayBlock(){
+        var dB =document.getElementById("txt");
+        dB.style.display= "block";
+    }
+    function reset(){
+        var mychose = confirm()
+        if(mychose==true);
+        mydiv.removeAttribute("style");
+    }
+</script>
+</html>

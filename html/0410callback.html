@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <style>
+        .d1{
+            background-color: green;
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            margin-top: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            $(".b1").click(function(){
+                $(".d1").hide(5000,function(){
+                    alert("n!");
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <button class="b1">按钮</button>
+    <div class="d1">new</div>
+</body>
+</html>

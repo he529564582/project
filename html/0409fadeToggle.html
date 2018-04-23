@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("button").click(function(){
+               $("#d1").fadeToggle(1000);
+            });
+            $("button").click(function(){
+               $("#d2").fadeToggle(1000);
+            });
+            $("button").click(function(){
+               $("#d3").fadeToggle(1000);
+            });
+        });
+    </script>
+</head>
+<body>
+        <h2>This is a heading</h2>
+        <p>This is a paragraph.</p>
+        <p>This is another paragraph.</p>
+        <button >Click me1</button> 
+        <div id="d1" style="width:80px;height:80px;display:none;background-color:red;"></div>
+        <div id="d2" style="width:80px;height:80px;display:none;background-color:yellow;"></div>
+        <div id="d3" style="width:80px;height:80px;display:none;background-color:green;"></div>  
+</body>
+</html>
