@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #d1{
+            background-color:green;
+            width:120px;
+            height:20px;
+            padding:40px;
+            color:#ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div id="d1" onmouseover="mOver(this)" onmouseout="mOut(this)" >1</div>
+    <script>
+        function mOver(x){
+            x.innerHTML= 2
+        }
+        function mOut(x){
+            x.innerHTML=1
+        }
+    </script>
+</body>
+</html>

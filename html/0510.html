@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        function myFunction()
+        {
+            var x;
+            var month = new Date().getMonth();
+            switch (month) 
+            {
+                case 0:
+                    x= 1;
+                    break;
+                case 1:
+                    x= 2;
+                    break;
+                case 2:
+                    x= 3;
+                    break;
+                case 3:
+                    x= 4;
+                    break;
+                case 4:
+                    x= 5;
+                    break;
+                case 5:
+                    x= 6;
+                    break;
+                case 6:
+                    x= 7;
+                    break;
+                case 7:
+                    x= 8;
+                    break;
+                case 8:
+                    x= 9;
+                    break;
+                case 9:
+                    x= 10;
+                    break;
+                case 10:
+                    x= 11;
+                    break;  
+                case 11:
+                    x= 12;
+                    break;      
+            }
+            document.getElementById("demo").innerHTML=x;
+        }
+    </script>
+</head>
+<body>
+    <p>点击下面的按钮来显示今天是周几：</p>
+        <button onclick="myFunction()">点击这里</button>    
+        <p id="demo"></p>  
+</body>
+</html>

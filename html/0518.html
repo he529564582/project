@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>时钟实例</title>
+    <style>
+        #timetxt{
+            width: 48px;
+            height: 16px;
+            background-color: #7cb5b7;
+            margin: 0px auto;
+        }
+    </style>
+</head>
+<body onload="startTime()"><!--起初调用该函数--><!--onload作用是页面加载之后立即执行一段 JavaScript-->
+<div id="timetxt">
+</div>
+<script>
+    function startTime() {
+        var today=new Date();
+        var h=today.getHours();
+        var m=today.getMinutes();
+        var s=today.getSeconds();
+        m=checkTime(m);
+        s=checkTime(s);
+        document.getElementById("timetxt").innerHTML=h+":"+m+":"+s;
+        var t=setTimeout(function () {//定义这个方法是为了使用递归，每次重新来获取到当前的时间（起到更新作用）
+            startTime();//setTimeout()在js类中的使用方法   setTimeout (表达式,延时时间)，时间单位是ms
+        },1000);
+    }
+    function checkTime(i) {//m和s在10之前一般会在之前加0.使时钟长度不会因为单数和双数发生改变
+        if(i<10)
+        {
+            i="0"+i;
+        }
+        return i;
+    }
+</script>
+</body>
+</html>
