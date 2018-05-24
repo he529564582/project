@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+            function myFunction()
+            {
+                var x;
+                var time = new Date().getHours();
+                if (time<9)
+                {
+                    x="Good morning";
+                }
+                else if(time<16)
+                {
+                    x= "good day";
+                }
+                else
+                {
+                    x="good evening";
+                }
+                document.getElementById("demo").innerHTML=x;
+            }
+        </script>
+</head>
+<body>
+        
+<p>如果时间大于 15:00，会获得问候 "Good evening"。</p>
+
+<button onclick="myFunction()">点击这里</button>
+
+<p id="demo"></p>
+   
+</body>
+</html>
