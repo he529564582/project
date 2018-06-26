@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var x=prompt("请输入","")
+        try{
+            if(x>10)
+            throw "Err1"
+            if(x<0)
+            throw "Err2"
+            if(isNaN(x))
+            throw "Err3"
+        }
+        catch(err){
+            if(err == "Err1")
+            alert("a")
+            if(err == "Err2")
+            alert("b")
+            if(err == "Err3")
+            alert("c")
+        }
+    </script>
+</body>
+</html>

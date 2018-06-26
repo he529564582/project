@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+            function Myfunction(){
+                var x;
+            var d=new Date().getDay();
+            switch(d){
+                case 0:
+                x="sunday"
+                break;
+                case 1:
+                x="Monday"
+                break;
+                case 2:
+                x="Tuesday"
+                break;
+                case 3:
+                x="Wednesday"
+                break;
+                case 4:
+                x="Thursday"
+                break;
+                case 5:
+                x="Friday"
+                break;
+                case 6:
+                x="Saturday"
+                break;
+            }
+            alert(x)
+        }
+        </script>
+</head>
+<body>
+    <button onclick="Myfunction()">1</button>
+</body>
+</html>
