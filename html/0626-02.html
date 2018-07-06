@@ -7,20 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-        <p>点击下面的按钮来显示今天是周几：</p>
+        <p>点击下面的按钮，只要 i 小于 5 就一直循环代码块。</p>
         <button onclick="myFunction()">点击这里</button>
         <p id="demo"></p>
     <script>
         function myFunction(){
-            var x="";
-            var day = new Date().getHours();
-            switch(day){
-                case 0:
-                document.write("a")
-                break;
-                default:
-                document.write("b")
+            var x ="";
+            var i = 0;
+            while(i<5){
+                x=x+i+"<br>";
+                i++;
             }
+            document.getElementById("demo").innerHTML=x;
         }
     </script>
 </body>

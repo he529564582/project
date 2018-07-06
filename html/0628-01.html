@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Image Gallery</title>
+</head>
+<body>
+    <script>
+    function showPic(whichpic){
+    var  source = whichpic.getAttribute("href");
+    var palceholder = document.getAttribute("palceholder");
+    palceholder.setattribute("src",source);
+    var text = whichpic.getAttribute("title");
+    var description = document.getElementById("description");
+    description.firstChild.nodeValue = txt;
+}    
+    </script>            
+    <h1>Snaphots</h1>
+    <ul>
+        <li><a href="../pic/a.jpg"  onclick="showPic(this); return false;" title=" A fireworks display">fireworks</a></li>
+        <li><a href="../pic/b.jpg"  onclick="showPic(this); return false;"  title=" A cap of black coffee">Coffee</a></li>
+        <li><a href="../pic/c.jpg"  onclick="showPic(this); return false;" title=" A red, red rose">Rose</a></li>
+        <li><a href="../pic/d.jpg"  onclick="showPic(this); return false;" title=" A famous clock">Big Ben</a></li>
+    </ul>
+    <img id="palceholder" src="../pic/e.jpg" alt="my Image Gallery"/>
+    <p id="description">choose an Image</p>
+ 
+</body>
+</html>

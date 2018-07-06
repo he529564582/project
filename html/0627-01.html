@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    
+    <style>
+        
+        p{
+            color: yellow;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.2em;
+        }
+        body{
+            color: white;
+            background-color: black;
+        }
+        .spcial{
+            font-style: italic;
+        }
+        h2.spcial{
+            text-transform: uppercase
+        }
+        #purchases{
+            border: 1px solid white;
+            border-color: #333;
+            color: #ccc;
+            padding: 1em;
+        }
+        #purchases li{
+            font-weight: bold;
+            list-style-type:none;
+        }
+        
+    </style>
+    <script>
+            // var items = document.getElementsByTagName("li");
+            // for( var i=0;i<items.length;i++){
+            //     alert(typeof items[i]);
+            // }
+            // alert(document.getElementsByTagName("li").length);
+            // alert(document.getElementsByTagName("*").length);
+            // var shopping =document.getElementById("purchases");
+            // var items =document.getElementsByTagName("*");
+            // for(var i =0; i<items.length;i++){
+            //     alert(typeof items[i]);
+            // }
+            //alert(document.getElementsByClassName("improtant sale").length);
+        </script>
+</head>
+<body>
+    <h1>what want buy</h1>
+    <p title=" a gentle reminder">Don't forgot to buy this stuff</p>
+    <p >this is just a test</p>
+    <ul id="purchases">
+        <li>a tin of bean</li>
+        <li class="sales">cheese</li>
+        <li class="sales improtant">milk</li>
+    </ul>
+       <script>
+            // var items = document.getElementsByTagName("li");
+            // for( var i=0;i<items.length;i++){
+            //     alert(typeof items[i]);
+            // }
+            // alert(document.getElementsByTagName("li").length);
+            // alert(document.getElementsByTagName("*").length);
+            // var shopping =document.getElementById("purchases");
+            // var items =document.getElementsByTagName("*");
+            // for(var i =0; i<items.length;i++){
+            //     alert(typeof items[i]);
+            // }
+            //alert(document.getElementsByClassName("improtant sale").length);
+            // var shopping =document.getElementById("purchases");
+            // var sales =getElementsByClassName(shopping,"sales");
+            // alert(sales.length);
+            // var paras = document.getElementsByTagName("P");
+            // for (var i =0;i<paras.length;i++){
+            //     alert(paras[i].getAttribute("title"));
+            // }
+                // var paras =document.getElementsByTagName("p");
+                // for (i =0;i<paras.length;i++){
+                //     var a =paras[i].getAttribute("title");
+                //     if(a) alert(a);
+                    
+                // }
+                // var shopping =document.getElementById("purchases");
+                // alert(shopping.getAttribute("title"));
+                // shopping.setAttribute("title","a list of good");
+                // alert(shopping.getAttribute("title"));
+            var paras =document.getElementsByTagName("p");
+            for(var i=0;i<paras.length;i++){
+                 var a =paras[i].getAttribute("title");
+                if(paras[i].getAttribute("title")){
+                    paras[i].setAttribute("title","new text");
+                    alert(paras[i].getAttribute("title"));
+                }
+            }
+        </script>
+</body>
+</html>

@@ -7,21 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-        <p>点击下面的按钮来显示今天是周几：</p>
+        <p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
         <button onclick="myFunction()">点击这里</button>
         <p id="demo"></p>
     <script>
         function myFunction(){
-            var x="";
-            var day = new Date().getHours();
-            switch(day){
-                case 0:
-                document.write("a")
-                break;
-                default:
-                document.write("b")
+            var x;
+            var txt ="";
+            var person=["A","B","C"];
+            for(x in person){
+                txt=txt+person[x];
             }
-        }
+            document.getElementById("demo").innerHTML=txt;
+        }      
     </script>
 </body>
 </html>

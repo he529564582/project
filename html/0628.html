@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<input value="OK">
+  <input value="O">
+
+<p id="demo">点击按钮来设置按钮的 type 属性。</p>
+
+<button onclick="myFunction()">试一下</button>
+
+<script>
+var tar = document.getElementsByTagName("INPUT");
+function myFunction()
+{
+  for (var i=0; i<tar.length;i++){
+      if(i){
+        i.setAttribute("type","button"); 
+      }
+   
+  }
+ //document.getElementsByTagName("INPUT").setAttribute("type","button"); 
+}
+</script>
+
+<p>Internet Explorer 8 以及更早的版本不支持此方法。</p>
+
+</body>
+</html>

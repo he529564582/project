@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1> document</h1>
+<p>Please input a number between 5 and 10:</p>
+<input id="demo" type="text">
+<button type="button" onclick="myFunction()">Test Input</button>
+<p id="mess"></p>
+<script>
+   function myFunction(){
+     try{
+       var x= document.getElementById("demo").value;
+       if(x=="") {
+         throw "empty";
+       }   
+       if(isNaN(x)) {
+          throw "not a number";
+       }
+       if(x>5)  {
+          throw "too higt";
+       }
+       if(x<=5) {
+          throw "too low";
+       }
+       if(x.indexOf("") == -1){
+           throw  "不能为空";
+       }
+           
+     }
+    catch(err){
+      
+      var y = document.getElementById("mess");
+      y.innerHTML= "ERR:"+ err+"."
+    }
+   }
+</script>
+
+</body>
+</html>
