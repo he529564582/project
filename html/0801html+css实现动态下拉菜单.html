@@ -1,0 +1,94 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        .top-nav{
+            width: 800px;
+            height: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+        }
+        ul{
+            list-style-type: none;
+        }
+        ul li{
+            float: left;
+            
+            background-color:bisque;
+        }
+        ul li a{
+            text-align: center;
+            line-height: 40px;
+            color: black;
+            text-decoration: none;
+           
+        }
+        ul li ul{
+            display: none;
+            padding: 0;
+        }
+        ul li ul li{
+            float: none;
+            
+        }
+        ul li:hover ul {
+            display: block;
+        }
+        ul li:hover{
+            background-color: cornflowerblue;
+        }
+        ul li ul li:hover{
+            background-color: brown;
+        }
+          /* 使用CSS设置鼠标移动到一级菜单时，二级菜单显示，三级菜单隐藏 */
+          ul li:hover ul{
+              display: block;
+          }
+          ul li:hover ul  li ul{
+              display: none;
+          }
+          /* 使用CSS设置鼠标移动到二级菜单时，三级菜单显示 */   
+          ul li ul li:hover ul{
+              display: block;
+          }
+          ul li ul
+        {
+            list-style: none;
+            display: none;
+            width: 80px;
+            padding: 0;
+            position: relative;
+        }
+        .top-nav li ul li ul
+        {
+            position: absolute;
+            top: 0;
+            left: 80px;
+        }
+        
+    </style>  
+</head>
+<body>
+    <ul class="top-nav">
+        <li><a href="#"><span class="note">慕课网</span></a> </li>
+        <li><a href="#">课程大厅</a> </li>
+        <li><a href="#">学习中心</a>
+            <ul id="mnuUL">
+                
+                <li><a href="#">前端课程 </a>
+                    <ul id="mnuUL">
+                           
+                            <li><a href="#">1 </a></li>
+                            <li><a href="#">2</a> </li>
+                            <li><a href="#">3</a></li>
+                        </ul>
+                </li>
+                <li><a href="#">手机开发</a> </li>
+                <li><a href="#">后台编程</a></li>
+            </ul>
+        </li>
+        <li><a href="#">关于我们</a></li>
+    </ul>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+        <form>
+                请选择你爱好:<br>
+                <input type="checkbox" name="hobby" id="hobby1">  音乐
+                <input type="checkbox" name="hobby" id="hobby2">  登山
+                <input type="checkbox" name="hobby" id="hobby3">  游泳
+                <input type="checkbox" name="hobby" id="hobby4">  阅读
+                <input type="checkbox" name="hobby" id="hobby5">  打球
+                <input type="checkbox" name="hobby" id="hobby6">  跑步 <br>
+
+
+                <input type="checkbox" value = "全选" id="all"   onclick="change()">全选
+                <input type="checkbox" value = "全不选" id="revcheck"   onclick = "revs()">反选
+
+
+                <p>请输入您要选择爱好的序号，序号为1-6:</p>
+                <input id="wb" name="wb" type="text" >
+                <input name="ok" type="button" value="确定"  onclick = "checkone()">
+              </form>
+              <script type="text/javascript">
+      //1.在第27行处补充完整，实现当点击"全选"按钮时，将选中所有的复选项。
+      //提示:document.getElementsByTagName("input")获取的是所有input标签，包括复选项和按钮，所以要判断是否是复选项，如是选中。
+      //2.在第33行处补充完整，实现当点击"全不选"按钮时，将取消所有选中的复选项。
+      //3.在第40行处补充完整，在文本框中输入输入1-6数值，当点击"确定"按钮时，根据输入的数值，通过id选中相应的复选项。
+              
+
+              //获取checkbox按钮组
+ var allpro = document.getElementsByName("hobby");
+ //全选方法
+ var onoff=false
+ function change(){
+    //获取全选按钮
+ var all = document.getElementById("all");
+
+ //全选按钮被选中时，遍历所有按钮
+    if(all.checked){
+     for(var i = 0; i < allpro.length; i++) {
+     if(allpro[i].type=="checkbox"){
+     allpro[i].checked=true;
+     }
+     }
+     //全选按钮未被选中时
+    }else{
+     for (var i = 0; i < allpro.length; i++) {
+         
+     if (allpro[i].type=="checkbox"){
+     allpro[i].checked=false;
+     }
+     }
+    }
+ }
+                //反选方法
+function revs(){
+    //获得反选按钮
+    var reverse = document.getElementById("revcheck");
+    //反选按钮被选中时，遍历所有按钮
+    if(reverse.checked){
+        for(var i =0;i<allpro.length;i++){
+            if(allpro[i].type =="checkbox" && allpro[i].checked==true){
+                allpro[i].checked =false;
+            }
+            else if(allpro[i].type=="checkbox" && allpro[i].checked==false){
+                allpro[i].checked= true;
+            }
+        } 
+    }//反选按钮未被选中时
+    else{
+        for (var i = 0; i < allpro.length; i++) {
+     if (allpro[i].type=="checkbox"&&allpro[i].checked==true) {
+     allpro[i].checked= false;
+     }else if (allpro[i].type=="checkbox"&&allpro[i].checked==false) {
+     allpro[i].checked= true;
+            } 
+        }
+    }
+}     
+      
+            </script>
+
+            /*function clearall(){
+                  var hobby = document.getElementsByName("hobby");
+                  
+               // 任务2    
+                  
+              }
+              
+              function checkone(){
+                  var j=document.getElementById("wb").value;
+              
+               // 任务3
+              
+              }*／ 
+
+
+             
+        </body>
+</html>

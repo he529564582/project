@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h4>操作成功</h4>
+    <a id="clock">10</a>秒后回到主页
+    <a href="javascript:esc();">返回</a>
+    <script>
+        var num =10;
+        var i =setTimeout(clock,1000);
+        function clock() {
+            num--;
+            setTimeout(clock, 1000);
+            document.getElementById("clock").innerHTML=num;
+            if(num==0){
+                location.assign("https://www.baidu.com");
+            }
+        }
+        function esc(){
+            window.history.back();
+        }
+    </script>
+</body>
+</html>

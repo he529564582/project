@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>实践题 - 选项卡</title>
+    <style type="text/css">
+     /* CSS样式制作 */  
+     *{
+         margin:0;
+         padding:0;
+         font:normal 12px "微软雅黑";
+         color:#000000;
+         }
+     ul{
+         list-style-type: none;
+         }
+     a{
+         text-decoration: none;
+         }
+
+     #tab-list{
+         width: 275px;
+         height:190px;
+         margin: 20px auto;
+         }
+
+     #ul1{
+         border-bottom: 2px solid #8B4513;
+         height: 32px;
+         }
+     #ul1 li{
+         display: inline-block;
+         width: 60px;
+         line-height: 30px;
+         text-align: center;
+         border: 1px solid #999;
+         border-bottom: none;
+         margin-left: 5px;
+         }
+     #ul1 li:hover{
+         cursor: pointer;
+         }
+     #ul1 li.active{
+         border-top:2px solid #8B4513;
+         border-bottom:2px solid #FFFFFF;}
+
+     #tab-list div{
+         border: 1px solid #7396B8;
+         border-top: none;
+         }
+     #tab-list div li{
+         height: 30px;
+         line-height: 30px;
+         text-indent: 8px;
+         }
+     
+     .show{
+         display: block;
+         }
+     .hide{
+         display: none;
+         }
+    </style>
+    <script type="text/javascript">
+         window.onload = function(){
+        var oUl = document.getElementById("ul1");
+        var aLi = oUl.getElementsByTagName("li");
+        var oDiv = document.getElementById('tab-list');
+        var aDiv = oDiv.getElementsByTagName('div');
+        //對頭部進行循環
+        for(var i=0; i<aLi.length; i++){
+            //給每一個導航添加一下索引
+            aLi[i].index=i;
+            //給每一個導航添加鼠標經過事件
+            aLi[i].onmouseover=function(){
+                //循環所有的導航並且清空激活樣式
+                for(var i=0; i<aLi.length; i++){ 
+                    aLi[i].className='';
+                    
+                }  
+                //給鼠標所在的導航添加激活樣式
+                this.className='active';
+                //循環所有的內容區域 並添加上bd的className  其實這一部的真正目的是為了去掉內容區域上的 on 樣式，也就是讓所有的div隱藏
+                for(var j=0; j<aDiv.length; j++){
+                    aDiv[j].className = 'hide';
+                }
+                //把導航對應的索引位置的 div 顯示出來，這裏也就是添加index的作用，通過這個索引來找到對應的div 這裏的 this 就是指上面鼠標所在的導航
+                aDiv[this.index].className = "show";
+            }
+        }
+     }
+    
+        </script>
+ 
+</head>
+<body>
+<div id="tab-list">
+    <ul id="ul1">
+        <li class="active">房产</li><li>家居</li><li>二手房</li>
+    </ul>
+    <div>
+        <ul>
+            <li><a href="javascript:;">275万购昌平邻铁三居 总价20万买一居</a></li>
+            <li><a href="javascript:;">200万内购五环三居 140万安家东三环</a></li>
+            <li><a href="javascript:;">北京首现零首付楼盘 53万购东5环50平</a></li>
+            <li><a href="javascript:;">京楼盘直降5000 中信府 公园楼王现房</a></li>
+        </ul>
+    </div>    
+    <div class="hide">
+        <ul>
+            <li><a href="javascript:;">40平出租屋大改造 美少女的混搭小窝</a></li>
+            <li><a href="javascript:;">经典清新简欧爱家 90平老房焕发新生</a></li>
+            <li><a href="javascript:;">新中式的酷色温情 66平撞色活泼家居</a></li>
+            <li><a href="javascript:;">瓷砖就像选好老婆 卫生间烟道的设计</a></li>
+        </ul>
+    </div>    
+    <div class="hide">
+        <ul>
+            <li><a href="javascript:;">通州豪华3居260万 二环稀缺2居250w甩</a></li>
+            <li><a href="javascript:;">西3环通透2居290万 130万2居限量抢购</a></li>
+            <li><a href="javascript:;">黄城根小学学区仅260万 121平70万抛!</a></li>
+            <li><a href="javascript:;">独家别墅280万 苏州桥2居优惠价248万</a></li>
+        </ul>
+    </div>
+</div>
+
+ 
+</body>
+</html>
