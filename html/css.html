@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Game Of Thrones</title>
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_799226_k2ptx72fmei.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_799342_kfg43nu8xdo.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .layout {
+            width: 100%;
+            margin: 0 auto;
+        }
+        a {
+            text-decoration: none;
+        }
+        ul {
+            list-style: none;
+        }
+        .cleardix {
+            content: '';
+            display: block;
+            clear:both;
+        }
+        .button {
+            font-size: 30px;
+            color: #364f6b;
+            background-color: #3fc1c9;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: inline-block;
+            opacity: .7;
+        }
+        .button:hover {
+            opacity: 1;
+        }
+        body {
+            font:14px/1.5 Arial;
+            background-color: #FFF;
+            color: #364f6b;
+        }
+        html,body {
+            height: 100%;
+        }
+        header {
+            height: 100%;
+            min-height: 600px;
+            background: #000 url(https://ss1.bdstatic.com/kvoZeXSm1A5BphGlnYG/skin_zoom/183.jpg?2) center center no-repeat;
+            background-size: cover; 
+        }
+        header .logo {
+            float:left;
+            font-size: 40px;
+            color:#3fc1c9;
+            margin-top: 20px;
+            margin-left: 20px;
+        }
+        header .logo:hover {
+            background-color:#3d84a8 ;
+            border-radius:4px;
+        }
+        header .nav >li {
+            float: left;
+            margin-top: 10px;
+            margin-right: 20px;
+        }
+        header .nav {
+            float: right;
+        }
+        .clearfix::after {
+            content: '';
+            display:block;
+            clear:both;
+        }
+        header .nav a {
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 16px;
+            color:#eeeeee;
+            margin-top: 10px;
+        }
+        header .nav a:hover {
+            background-color: #3fc1c9;
+        }
+        header .intro {
+            color: #a8d8ea;
+            text-align: center;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        header .intro h2 {
+            font-size: 32px;
+        }
+        header .intro h3 {
+            font-size: 42px;
+            margin-top: 20px;
+        }
+        header .intro .button {
+            margin-top: 20px;
+        }
+        section {
+            text-align: center;
+            margin-top: 30px;
+        }
+        section > h2 {
+            font-size: 40px;
+            margin: 20px 0;
+            padding: 20px 0;
+        }
+        section > p { 
+            margin-top: 10px;
+        }
+        section > .pic-list > li {
+            float: left;
+            width: 33.33%;
+            padding: 10px 20px;
+        }
+        section > ul .iconfont {
+          font-size: 60px;  
+        }
+        section p {
+            font-size: 20px;
+            color: #364f6b;
+            /* margin-bottom:10px; */
+        }
+        /* section > ul p {
+            /* margin-top: 10px; */
+         
+        section .pic-list figure {
+            width: calc(33.33% - 30px); 
+            /* height: 320px; */
+            margin: 10px;
+            float: left;
+        }
+        section .pic-list figure a {
+            opacity: 1;
+        }
+        section .pic-list figure a:hover {
+            opacity: .7;
+        }
+        section .pic-list img {
+            width: 80%;
+            height: 100%;
+        }
+        section .pic-list a {
+            display: block; 
+            height: 240px;;
+        }
+        section .pic-list figcaption{
+            margin: 10px 0;
+            color:#364f6b;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        section .pic-list p {
+            margin: 10px 0;
+            color:#364f6b;
+            font-size: 16px;
+        }
+        section .time-line > li {
+            margin-top: 20px;
+            position: relative;
+        }
+        section .time-line img {
+            width:200px;
+            height: 200px;
+            border-radius: 50%;
+            border:solid 3px lightblue;
+        }
+        section .time-line > li:nth-child(odd) {
+            padding-right: calc(50% - 100px);
+            text-align: right;
+        }
+        section .time-line > li:nth-child(odd) dl {
+            margin: 120px;
+        }
+        section .time-line > li:nth-child(odd) img {
+            float: right;
+        }
+        section .time-line > li::after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+        section .time-line > li:nth-child(even) {
+            padding-left: calc(50% - 100px);
+            text-align: left;
+        }
+        section .time-line > li:nth-child(even) dl {
+            margin: 120px;
+        }
+        section .time-line > li:nth-child(even) img {
+            float: left;
+        }
+        section .time-line dt {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        section .time-line dd:nth-child(2) {
+            color:#222831;
+            font-size: 16px;
+        }
+        section .time-line >li::before{
+            content: '';
+            display: inline-block;
+            height: 100px;
+            width: 3px;
+            background-color: lightblue;
+            position: absolute;
+            left: 50%;
+            top:200px;
+            margin-left: 0; 
+        }
+        section .time-line .end {
+            background-color: #ffd73a;
+            border: solid 3px lightblue;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            line-height: 200px;
+            display: inline-block;
+            vertical-align: middle;
+            text-align: center;
+            font-size: 30px;
+            font-weight: bold;
+        }
+        section .time-line > li:last-child::before {
+            height: 0;
+            
+        }
+        .section-3 {
+            background-color: #f6f7d7 ;
+            background-size: cover;
+            
+        }
+       section .person img {
+            width: 250px;
+            height: 250px;
+            border:3px #3f72af solid;
+            border-radius: 50%;
+            margin: 20px 0;
+        }
+        section .person .iconfont {
+            width:30px;
+            height: 30px;
+        }
+        section .person > li{
+            float: left;
+            width: 33.33%   
+        }
+        
+        .section-3 i {
+            width: 60%;
+            text-align: center;
+        }
+        section .aside {
+            margin: 20px 0;
+            margin-bottom: 0px;
+
+        }
+         section .aside div { 
+             height: 100px;
+         } 
+         section .aside div img{
+             text-align: center;
+         }
+         section .aside {
+             height: 100px;
+         }
+         section .aside li {
+             float: left;
+             width: 25%;
+             padding: 20px;
+             /* margin: 10px 10px; */
+         }
+         .contact {
+             background: #000 url(http://img2.imgtn.bdimg.com/it/u=2547074817,4116291403&fm=214&gp=0.jpg) center center no-repeat;
+             background-size: cover;
+             height: 100%;
+             min-height: 600px; 
+         }
+         .contact {
+            height:100%;
+            width: 100%;
+         }
+         .container {
+             width: 80%;
+             position: relative;
+         }
+         .desc-left{
+             margin-left:30%;
+         }
+         .container input {
+             display: block;
+             width: 400px;
+             height: 30px;
+             padding: 20px;
+             margin: 20px;
+         }
+         .container textarea {
+            width: 400px;
+             padding: 20px;
+             margin: 20px;
+         }
+         .contact div {
+             float: left;
+         }
+         .contact button{
+             position: absolute;
+             left: 55%;
+            top: 100%;
+             border-radius:4px;
+             width: 200px;
+             height: 50px;
+             background: #ffd73a;
+             font-size: 20px;
+             font-weight: bold;
+             color: #FFF;
+         }
+         .nav-footer li {
+             display: block;
+             float: left;
+             margin: 15px;
+         }
+         .nav-footer .iconfont {
+            font-size: 35px;
+         }
+         .nav-footer a {
+             font-size: 16px;
+             font-weight: bold;
+             padding: 10px;
+             display: block;
+             height: 30px;
+         }
+         .list-1,.list-2,.list-3 {
+             margin-left:200px;
+         }
+         .list-1 {
+             margin-right: 200px;
+         }
+         .nav-footer span {
+             display: block;
+         }
+    </style>
+<head>
+<body>
+    <header>
+        <div class="navbar layout clearfix">
+            <a href="#" class="logo">Game Of Thrones</a>
+            <ul class="nav">
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Family</a></li>
+                <li><a href="#">Character</a></li>
+                <li><a href="#">Team</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+        <div class="intro layout">
+                <h2>WINTER IS COMMING.</h2>
+                <h3>ALONE WOLF DEATH,WOLVES LIVE.</h3>
+                <a href="" class="button">Tell me more</a>
+        </div>
+    </header>
+    <main class="layout">
+        <section>
+            <h2>Education</h2>
+            <p>The place of Science and Technology in Modern Life</p>
+            <ul class="pic-list clearfix"> 
+                <li>
+                    <span class="iconfont icon-a"></span>
+                    <h3>Importance of Education</h3>
+                    <p>China, as a developing country, is determined to catch up with and even surpass the developed ones. I think that one of the best possible ways to do so is to give first priority to the development of culture, science and especially education.</p>
+                </li>
+                <li>
+                    <span class="iconfont icon-b"></span>
+                    <h3>Importance of Education</h3>
+                    <p>China, as a developing country, is determined to catch up with and even surpass the developed ones. I think that one of the best possible ways to do so is to give first priority to the development of culture, science and especially education.</p>
+                </li>
+                <li>
+                    <span class="iconfont icon-c"></span>
+                    <h3>Importance of Education</h3>
+                    <p>China, as a developing country, is determined to catch up with and even surpass the developed ones. I think that one of the best possible ways to do so is to give first priority to the development of culture, science and especially education.</p>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <h2>Air pollution</h2>
+            <p>Air pollution is one of the major problems of the modern world</p>
+            <div class="pic-list clearfix">  
+                <figure>
+                    <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                    <figcaption>Air pollution</figcaption>
+                    <p>We must adhere to the open policy.</p>
+                </figure>
+                <figure>
+                        <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                        <figcaption>Air pollution</figcaption>
+                        <p>We must adhere to the open policy.</p>
+                </figure>
+                <figure>
+                        <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                        <figcaption>Air pollution</figcaption>
+                        <p>We must adhere to the open policy.</p>
+                </figure>
+                <figure>
+                        <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                        <figcaption>Air pollution</figcaption>
+                        <p>We must adhere to the open policy.</p>
+                </figure>
+                <figure>
+                        <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                        <figcaption>Air pollution</figcaption>
+                        <p>We must adhere to the open policy.</p>
+                </figure>
+                <figure>
+                        <a href="#"><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1534681825710&di=40862d0f121e998000343c3f7b05981d&imgtype=0&src=http%3A%2F%2Fimg02.tooopen.com%2Fimages%2F20151022%2Ftooopen_sy_145964219555.jpg" alt=""></a>
+                        <figcaption>Air pollution</figcaption>
+                        <p>We must adhere to the open policy.</p>
+                </figure>
+            </div>
+        </section>
+        <section>
+            <h2>Science and technology</h2>
+            <p>The place of Science and Technology in Modern Life.</p>
+            <ul class="time-line">
+                <li>
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_New_Mexico.svg/1200px-Flag_of_New_Mexico.svg.png" alt="">                        <dl>
+                      <dl>  
+                        <dt>April 2018</dt>
+                        <dd>Environmental Protection</dd>
+                        <dd>Today the quality of our natural environment has become an important issue. The world population is rising so quickly that the world has become too crowded. We are using up our natural resources and at the same time polluting our environment with dangerous chemicals. If we continue to do this, life on earth cannot survive.</dd>
+                    </dl>
+                </li>
+
+                <li>
+                        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_New_Mexico.svg/1200px-Flag_of_New_Mexico.svg.png" alt="">                        <dl>
+                    <dl>
+                        <dt>April 2018</dt>
+                        <dd>Environmental Protection</dd>
+                        <dd>Today the quality of our natural environment has become an important issue. The world population is rising so quickly that the world has become too crowded. We are using up our natural resources and at the same time polluting our environment with dangerous chemicals. If we continue to do this, life on earth cannot survive.</dd>
+                    </dl>
+                </li>
+                <li>
+                        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_New_Mexico.svg/1200px-Flag_of_New_Mexico.svg.png" alt="">                        <dl>
+                    <dl>
+                        <dt>April 2018</dt>
+                        <dd>Environmental Protection</dd>
+                        <dd>Today the quality of our natural environment has become an important issue. The world population is rising so quickly that the world has become too crowded. We are using up our natural resources and at the same time polluting our environment with dangerous chemicals. If we continue to do this, life on earth cannot survive.</dd>
+                    </dl>
+                </li>
+                <li>
+                        <img src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Flag_of_New_Mexico.svg/1200px-Flag_of_New_Mexico.svg.png" alt="">                        <dl>
+                     <dl>
+                        <dt>April 2018</dt>
+                        <dd>Environmental Protection</dd>
+                        <dd>Today the quality of our natural environment has become an important issue. The world population is rising so quickly that the world has become too crowded. We are using up our natural resources and at the same time polluting our environment with dangerous chemicals. If we continue to do this, life on earth cannot survive.</dd>
+                    </dl>
+                </li>
+                <li>
+                <p class="end">The end</p>
+                </li>
+            </ul>
+        </section>
+        <section class="section-3 ">
+            <h2>OUR AMAZING TEAM</h2>
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <ul class="person clearfix">
+                <li > 
+                    <figure >
+                        <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/7.jpg" alt=""></a>
+                        <p>Diana Pertersen</p>
+                        <figcaption>Lead Designer</figcaption>
+                        <span class="iconfont icon-Twitter"></span>
+                        <span class="iconfont icon-facebook"></span>
+                        <span class="iconfont icon-ins"></span>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/7.jpg" alt=""></a>
+                        <p>Diana Pertersen</p>
+                        <figcaption>Lead Designer</figcaption>
+                        <span class="iconfont icon-Twitter"></span>
+                        <span class="iconfont icon-facebook"></span>
+                        <span class="iconfont icon-ins"></span>
+                    </figure>
+                </li>
+                <li>
+                    <figure>
+                        <a href="#"><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/team/7.jpg" alt=""></a>
+                        <p>Diana Pertersen</p>
+                        <figcaption>Lead Designer</figcaption>
+                        <span class="iconfont icon-Twitter"></span>
+                        <span class="iconfont icon-facebook"></span>
+                        <span class="iconfont icon-ins"></span>
+                    </figure>
+                </li>
+            </ul> 
+            <i>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</i>   
+        </section>
+        <section>
+            <div class="aside">
+                <ul>
+                    <li><a href=""><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/envato.jpg" alt=""></a> </li>
+                    <li><a href=""><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/designmodo.jpg" alt=""></a> </li>
+                    <li><a href=""><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/themeforest.jpg" alt=""></a> </li>
+                    <li><a href=""><img src="http://book.jirengu.com/jirengu-inc/jrg-tehui/homework/%E8%8B%A5%E6%84%9A/16/img/logos/creative-market.jpg" alt=""></a> </li>
+                </ul>
+            </div>
+        </section>
+        <section class="contact clearfix">
+                <h2>Contact Us</h2>
+                <h3>Lorem ipsum dolor sit amet consectetur.</h3>
+                <div class="container">
+                    <div class="desc-left">
+                        <input type="text" placeholder="YOUR NAME">
+                        <input type="text" placeholder="YOUR EMAIL">
+                        <input type="text" placeholder="YOUR PHONE">
+                    </div>
+                    <div class="desc-right">
+                        <textarea name="" id="" cols="30" rows="10" placeholder="YOUR MESSAGE"></textarea>
+                    </div>
+                   <a href="#"><button>SENT MESSAGE</button></a>
+                </div>
+            </section>
+    </main>
+    <footer>
+        <ul class="nav-footer clearfix">
+            <li><a class="list-1" href="#">Copyright © Your Website 2014</a> </li>
+            <li><span class="iconfont icon-Twitter"></span></li>
+            <li><span class="iconfont icon-facebook"></span></li>
+            <li><span class="iconfont icon-ins"></span></li>
+            <li><a class="list-2" href="#">Privacy Policy </a></li>
+            <li><a class="list-3" href="#">Terms of Use <a><li>
+        </ul>
+    </footer>
+</body>
+</html>
