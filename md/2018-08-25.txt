@@ -57,3 +57,4 @@ var obj = {
 obj == "[object Object]"
 obj == 1
 obj == true
+  
