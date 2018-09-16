@@ -213,7 +213,7 @@
       $('.flip-modal').style.display = 'none'
     }
     $('.flip-modal').addEventListener('click', function(e){
-      // 点击flip-modal区域不冒泡
+      //点击flip-modal区域不冒泡
       e.stopPropagation()
       //切到登录页面
       if(e.target.classList.contains('login')){
@@ -228,7 +228,6 @@
       console.log(e.target)
       console.log(this)
       window.target = e.target
-      //关闭（X）
       if(e.target.classList.contains('close')){
         $('.flip-modal').style.display = 'none'
       }
@@ -240,8 +239,9 @@
 
 
 
-
+      //监听submit事件（login）
     $('.modal-login form').addEventListener('submit', function(e){
+      //阻止默认事件
       e.preventDefault()
       if(!/^\w{3,8}$/.test($('.modal-login input[name=username]').value)){
         $('.modal-login .errormsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
@@ -253,7 +253,9 @@
       }
       this.submit()      
     })
+    ////监听submit事件（register）
     $('.modal-register form').addEventListener('submit', function(e){
+      ////阻止默认事件
       e.preventDefault()
       if(!/^\w{3,8}$/.test($('.modal-register input[name=username]').value)){
         $('.modal-register .errormsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
