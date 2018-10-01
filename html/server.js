@@ -37,7 +37,7 @@ http.createServer(function(req,res){
         res.end(JSON.stringify({beijing:'sunny'}))
         break;
         default:
-        fs.readFile(path.join(__dirname,pathObj,pathname),function(e,data){
+        fs.readFile(path.join(__dirname,pathObj.pathname),function(e,data){
             if(e){
                 res.writeHead(404,'not found')
                 res.end('<h1>404 not found</h1>')
