@@ -199,3 +199,112 @@ for(var i=0; i<5; i++){
            return a+b
        }
    }
+
+   function car(){
+       var speed = 0
+       function fn(){
+           speed++
+           console.log(speed)
+       }
+       return fn
+   }
+   var speedUp = car()
+   speedUp()    //1
+   speedUp()    //2
+
+   
+
+
+   function car(){
+       var speed = 0
+       function fn(){
+           speed++
+           console.log(speed)
+       }
+       return fn
+   }
+   var speedUp = car()
+   speedUp() //1
+   speedUp() //2
+
+
+   var  fnArr = []
+   for(var i = 0;i<10;i++){
+       fnArr[i] = function(){
+           return i
+       }
+   }
+   console.log(fnArr[3]())  //10
+
+   var fnArr =[]
+   for(var i = 0;i < 10;i++){
+       fnArr[i] = (function(j){
+           return function(){
+               return j
+           }
+       })(i)
+   }
+   console.log(fnArr[3]()) // 3
+
+   var fnArr = []
+   for(var i=0;i<10;i++){
+       (function(i){
+           fnArr[i] = function(){
+               return i
+           }
+       })(i)
+   }
+   console.log(fnArr[3]()) //3
+
+   var fnArr = []
+   for(let i = 0;i<10; i++){
+       fnArr[i]= function(){
+           return i
+       }
+   }
+    console.log(fnArr[3]()) // 3
+
+    function car(){
+        var speed = 0
+        function fn(){
+            speed++
+            console.log(speed)
+        }
+        return fn
+    }
+    var speedUp =car()
+    speedUp() //1
+    speedUp() //2
+
+
+
+    var fnArr =[]
+    for(var i =0;i<10;i++){
+        fnArr[i]= function(){
+            return i
+        }
+    }
+    console.log(fnArr[3]()) //10
+
+    var fnArr =[]
+    for(var i = 0; i<10; i++){
+        fnArr[i] = (function(j){
+            return function(){
+                return j
+            }
+        })(i)
+    }
+    console.log(fnArr[3]()) //3
+
+    var fnArr = []
+    for(var i = 0;i<10;i++){
+        (function(i){
+            fnArr[i] = function(){
+                return i;
+            }
+        })(i)
+    }
+    console.log(fnArr[3]()) // 3
+
+
+    
