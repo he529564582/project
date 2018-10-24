@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>a</li>
+            <li>b</li>
+            <li>c</li>
+            <li>d</li>
+        </ul>
+        <input class="inp" type="text"><button class="add">add</button>
+    </div>
+    <div class="wrap"></div>
+    <script>
+        //绑定事件
+        $('.add').on('click',function(){
+            var inp =$('.inp').val()
+            $('.box ul').append('<li>'+inp+'</li>')
+            
+        })
+        //add 之后的元素是没有绑定事件的，这个时候需要用到事件代理
+        $('ul').on('click','li',function(){
+            // console.log($(this).text())
+            $('.wrap').text($(this).text())
+        })
+    </script>
+</body>
+</html>

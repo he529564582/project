@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+</head>
+<body>
+    <div class="box">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <input type="text" class="inp">
+    <button class="btn">添加</button>
+    <div class="wrap"></div>
+</body>
+<script>
+    $('.box li').on('click',function(){
+        console.log($(this).text())
+        var abc = $(this).text()
+        $('.wrap').text(abc)
+    })
+
+
+    // $('li').click(function(){
+    //     console.log($(this).text())
+    //     var a = $(this).text()
+    //     $('.wrap').text(a)
+    // })
+
+    // $('.box ul').on('click','li',function(){
+    //     console.log($(this).text())
+    //     var a = $(this).text()
+    //     $('.wrap').text(a)
+    // })
+    $('.btn').on('click',function(){
+        console.log($(this).text())
+        var b = $('.inp').val()
+        $('.box ul').append('<li>'+b+'</li>')
+    })
+</script>
+</html>
