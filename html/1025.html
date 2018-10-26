@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <style>
+        * {
+        box-sizing: border-box;
+        }
+        body, ul, li, p{
+        margin: 0;
+        padding: 0;
+        }
+        ol,ul{
+        list-style: none;
+        }  
+        body {
+        font: 12px/150% Arial,Verdana,"\5b8b\4f53";
+        color: #666;
+        }
+        a {
+        color: #666;
+        text-decoration: none;
+        
+        }
+
+        .clearfix:after{
+        content:'';
+        display: block;
+        clear: both;
+        }
+        .clearfix{
+        *zoom: 1;
+        }
+
+        .layout{
+            width: 750px;
+            margin: 10px auto;
+        }
+
+        .btn{
+        display: inline-block;
+        border: 1px solid #c81623;
+        color: #c81623;
+        padding: 10px 15px;
+        border-radius: 3px;
+        text-align: center;
+        background: #fff;
+        cursor: pointer;
+        }
+        .prod{
+        position: relative;
+        float: left;
+        width: 220px;
+        padding: 10px 20px;
+        margin-left: 20px;
+        margin-top: 20px;
+        text-align: center;
+        border: 1px solid #eee;
+        background: #fff;
+        }
+        .prod img{
+        width: 100%;
+        height: 100%;
+        }
+        .cover{
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(0,0,0, 0.3);
+        transition: all 0.3s;
+        opacity: 0;
+        }
+        .cover .btn{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        }
+        .prod.hover .cover{
+        opacity: 1;
+        }
+        .prod-ct{
+        margin-left: -20px;
+        margin-top: -20px;
+        }
+        .prod-name{
+        height: 36px;
+        text-align: left;
+        font-weight: normal;
+        font-size: 12px;
+        color: #666;
+        }
+        .prod-price{
+        text-align: left;
+        color: #c81623;
+        }
+        .btn{
+        margin-top: 20px;
+        margin-right: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <h1>demo</h1>
+            <ul class="prod-ct clearfix">
+                <li class="prod">
+                    <div class="cover">
+                        <a class="btn  action-delete" href="">删除</a>
+                    </div>
+                    <a href="#">
+                        <img src="https://picsum.photos/g/200/200/?2" alt="">
+                        <div class="prod-name">AAAAA</div>
+                        <div class="prod-price">￥999.00</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover">
+                        <a class="btn  action-delete" href="">删除</a>
+                    </div>
+                    <a href="#">
+                        <img src="https://picsum.photos/g/200/200/?2" alt="">
+                        <div class="prod-name">BBBBB</div>
+                        <div class="prod-price">￥888.00</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover">
+                        <a class="btn  action-delete" href="">删除</a>
+                    </div>
+                    <a href="#">
+                        <img src="https://picsum.photos/g/200/200/?2" alt="">
+                        <div class="prod-name">CCCCC</div>
+                        <div class="prod-price">￥777.00</div>
+                    </a>
+                </li>
+            </ul>
+            <a href="#" class="btn btn-add">添加</a>
+            <a href="#" class="btn btn-edit">编辑</a>
+    </div>  
+    <script>     
+            /*向html里添加元素,字符串的拼接*/
+            function getProdHtml(prod){
+                var html = '';
+                html += '<li class="prod">';
+                html +=   '<div class="cover"><a class="btn action-delete" href="#">删除</a></div>'
+                html +=    '<a href="#">'
+                html +=      '<img src="'+prod.img+'" alt="">'
+                html +=      '<div class="prod-name">'+prod.name+'</div>'
+                html +=      '<div class="prod-price">'+prod.price+'</div>'
+                html +=    '</a>'
+                html += '</li>';
+                return html;
+            }
+            //获取数据
+            function getData(){
+            var results = []
+            for(var i = 0; i<3; i++){
+            var rand = Math.floor(Math.random()*100)
+            var product = 	{
+                    img: '//picsum.photos/g/200/200/?'+rand,
+                    name: 'A B C',
+                    price: '￥'+rand
+                } 
+            results.push(product)
+            }
+            return results
+            }
+
+            $('.btn-add').on('click', function(e){
+                e.preventDefault();
+                $('.prod').removeClass('hover')
+                var products = getData()
+                $.each(products, function(idx, prod){
+                    var html = getProdHtml(prod)
+                    $('.prod-ct').append(html)
+                })
+            })
+
+            $('.btn-edit').on('click', function(e){
+                e.preventDefault();
+                $('.prod').toggleClass('hover')
+            })
+            //新增的prod会没有效果，因为绑定事件的时候是对当前的prod进行绑定的，所以要在父元素（.prod-ct）上绑定事件代理才会有效果
+            $('.prod-ct').on('click', '.action-delete', function(e){
+            e.preventDefault()
+            $(this).parents('.prod').remove()
+            })
+    </script>
+</body>
+</html>

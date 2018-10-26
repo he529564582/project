@@ -1,0 +1,50 @@
+<script>
+    function getData(){
+       var result = []
+       for(var i = 0;i<3;i++){
+           var rand = Math.floor(Math.random()*100)
+           var product = { 
+               img:'//picsum.photos/g/200/200/?'+rand,
+               name:'a b c',
+               price:'💰'+rand
+           }
+           result.push(product) 
+       }
+       return result
+    }
+    function getProdHtml(prod){
+        var html =''
+        html += '<li class="prod">'
+        html +=     '<div class="cover"><a class="btn action-delete" href="#">删除</a></div>'
+        html +=     '<a href="#">'
+        html +=          '<img src = "'+prod.img+'" alt="">'
+        html +=          '<div class="prod-name">'+prod.name+'</div>'
+        html +=         '<div class="prod-price">'+prod.price+'</div>'
+        html +=     '</a>'
+        html += '</li>'
+    }
+
+    $('.btn-add').on('click',function(e){
+        e.preventDefault();
+        $('prod').removeClass('hover')
+        var product = getData()
+        $.each(product,function(index,prod){
+            var html =getProdHtml(prod)
+            $('.prod-ct').append(html)
+        })
+    })
+    $('.btn-edit').on('click',function(e){
+        e.preventDefault()
+        $('.pord').toggleClass('hover')
+    })
+    $('.prod-ct').on('click','action-delete',function(){
+        e.preventDefault()
+        $(this).parents('.prod').remove()
+    })
+</script>
+
+
+
+
+
+
