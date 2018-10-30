@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_896599_f9nnq2dvp9n.css">
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html,body,main {
+            height: 100%;
+            position: relative;
+        }
+        main {
+            height: calc(100% - 50px);
+        }
+        footer {
+            display: flex;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 55px;
+            border-top: solid 1px #eee;
+        }
+        div {
+            flex: 1;
+            text-align: center;
+            padding-top: 5px;
+            
+        }
+        footer div>span {
+            display: block;
+            padding-top: 5px;
+            
+        }
+        footer .active {
+            color: #30e3ca;
+        }
+        main section {
+            display: none;
+        }
+        main > section:first-child {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+   <main>
+       <section class="top250">1</section>
+       <section class="us">2</section>
+       <section class="search">3</section>
+   </main> 
+   <footer>
+       <div class="active">
+           <span class="iconfont icon-top250"></span><span>榜单</span>
+       </div>
+       <div>
+            <span class="iconfont icon-us"></span><span>北美</span>
+        </div>
+        <div>
+            <span class="iconfont icon-search"></span><span>search</span>
+        </div>
+   </footer>
+</body>
+<script>
+    $('footer>div').click(function(){
+        console.log($(this).index())
+        var idx = $(this).index()
+        $('section').hide().eq(idx).fadeIn()
+        $(this).addClass('active').siblings().removeClass('active')
+    })
+</script>
+</html>
