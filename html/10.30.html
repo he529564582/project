@@ -28,7 +28,7 @@
             height: 55px;
             border-top: solid 1px #eee;
         }
-        div {
+        footer div {
             flex: 1;
             text-align: center;
             padding-top: 5px;
@@ -48,11 +48,76 @@
         main > section:first-child {
             display: block;
         }
+        a {
+            text-decoration: none;
+            color: #333
+        }
+        /* .item a {
+            display: block;
+        }
+        .cover {
+            position: relative;
+        }
+        .cover::after {
+            content: '';
+            display:block;
+            clear: both;
+        }
+        .cover img {
+            width: 70px;
+            position: absolute;
+            left: 0;
+            top: 0;
+            padding: 2px;
+        }
+        .details {
+            
+            float: left;
+        } */
+        .top250 .item::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .item div {
+            float: left;
+        }
+        .cover img {
+            width: 85px;
+            left: 0;
+            top: 0;
+            padding: 5px;
+        }
+       .item a {
+            display: block;
+        }
+        .item {
+            border-bottom: solid gray 1px;
+        }
+        .item .detail {
+            padding-top: 5px;
+        }
     </style>
 </head>
 <body>
    <main>
-       <section class="top250">1</section>
+       <section class="top250">
+           <div class="item">
+                <div class="cover">
+                        <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
+                </div>
+                <div class="detail">
+                    <a href="#"><h2>霸王别姬</h2></a>
+                    <div class="extra">
+                        <a href="#"><span class="score">分</span></a>
+                        <a href="#"><span class="collect-count">收藏</span></a>
+                    </div>
+                    <a href="#"><div class="extra"><span class="year">1994</span><span class="type"> / 剧情、爱情</span></div></a>
+                    <a href="#"><div class="extra">导演：<span class="director">张艺谋</span></div></a>
+                    <a href="#"><div class="extra">主演：<span class="actor">张艺谋</span></div></a>
+                 </div> 
+           </div>
+       </section>
        <section class="us">2</section>
        <section class="search">3</section>
    </main> 
@@ -69,11 +134,24 @@
    </footer>
 </body>
 <script>
-    $('footer>div').click(function(){
-        console.log($(this).index())
-        var idx = $(this).index()
-        $('section').hide().eq(idx).fadeIn()
-        $(this).addClass('active').siblings().removeClass('active')
-    })
+    // $('footer>div').click(function(){
+    //     console.log($(this).index())
+    //     var idx = $(this).index()
+    //     $('section').hide().eq(idx).fadeIn()
+    //     $(this).addClass('active').siblings().removeClass('active')
+    // })
+    // $.ajax({
+    //     url:'http://api.douban.com/v2/movie/top250',
+    //     type:'GET',
+    //     data: {
+    //         start: 0,
+    //         count: 20
+    //     },
+    //     dataType: 'jsonp'
+    // }).done(function(ret){
+    //     console.log(ret)
+    // }).fail(function(){
+    //     console.log('网络错误')
+    // })
 </script>
 </html>
