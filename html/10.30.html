@@ -14,23 +14,28 @@
             padding: 0;
             box-sizing: border-box;
         }
-        html,body,main {
+        html,body,main{
             height: 100%;
             position: relative;
         }
-        ul{
+        body{
+            font-size: 12px;
+            line-height: 1.2;
+        }
+        ul{   
             list-style-type: none;
         }
         /* main {
             height: calc(100% - 50px);
         } */
         main>section {
-            height: calc(100% - 45px);
+            height: calc(100vh - 50px);
             /* padding: 10px; */
             background: #fff;
             overflow: scroll;
             -webkit-overflow-scrolling: touch; /*ios 上增加弹性*/
-            }
+            display:none;
+        }
         footer {
             position: absolute;
             bottom: 0;
@@ -64,28 +69,7 @@
             text-decoration: none;
             color: #444f5a
         }
-        /* .item a {
-            display: block;
-        }
-        .cover {
-            position: relative;
-        }
-        .cover::after {
-            content: '';
-            display:block;
-            clear: both;
-        }
-        .cover img {
-            width: 70px;
-            position: absolute;
-            left: 0;
-            top: 0;
-            padding: 2px;
-        }
-        .details {
-            
-            float: left;
-        } */
+        
         .top250 .item::after{
             content: '';
             display: block;
@@ -146,8 +130,9 @@
 <body>
    <main>
        <section class="top250">
-            <!-- <div class="item">
-                    <a href="">
+            <!-- 
+                <div class="item">
+                    <a href="#">
                         <div class="cover">
                             <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
                         </div>
@@ -155,31 +140,16 @@
                             <h2></h2>
                             <div class="extra">
                                 <ul>
-                                    <li><span class="score"></span>分<span class="collect-count"></span>收藏<li>
-                                    <li><span class="year"></span>年<span class="type"></span><li>
-                                    <li><span class="directors"></span></li>
-                                    <li><span class="actors"></span></li>
-                                    
+                                    <li><span class="score"></span>分 / <span class="collect-count"></span>收藏<li>
+                                    <li><span class="year"></span>年 / <span class="type"></span><li>
+                                    <li>导演：<span class="directors"></span></li>
+                                    <li>演员：<span class="actors"></span></li>  
                                 <ul>
-                             <span class="score"></span>分
-                             <span class="collect-count"></span>收藏 
-                            </div>
-                             <div class="extra">
-                                <span class="year"></span>年
-                                <span class="type"></span>
-                            </div>
-
-                     <div class="extra">导演：
-                            <span class="directors"></span>
-                        </div>
-                    
-                        <div class="extra">主演：
-                            <span class="actors"></span>
-                        </div>
-                   
-                    </div>     
-                </a>
-            </div> -->
+                            </div>  
+                        </div>     
+                    </a>
+                </div>
+             -->
        </section>
        <section class="us">2</section>
        <section class="search">3</section>
@@ -212,30 +182,23 @@
         type:'GET',
         data: {
             start: 0,
-            count: 20
+            count: 10
         },
         dataType: 'jsonp'
     }).done(function(ret){
          setData(ret)
-         index += 20
+         index += 10
         console.log(ret)
     }).fail(function(){
         console.log('网络错误')
     })
     }
-    $('section').scroll(function(){
-        var scrollTop = $(this).scrollTop();
-    　　var scrollHeight = $(document).height();
-    　　var windowHeight = $(this).height();
-    　　if(scrollTop + windowHeight == scrollHeight){
-    　　　　start()
-    　　}
+    
+        
 
 
-        if($('section').eq(0).height() == $('section').scrollTop() + $('secion').height()){
-            start()
-        }
-    })
+        
+    
     //拼装DOM
     function setData(data){
         data.subjects.forEach(function(subject){
