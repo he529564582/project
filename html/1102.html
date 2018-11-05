@@ -302,9 +302,9 @@
            },
            getData:function(callback){
                var _this = this
-               if(_this.isLoading) return
-               _this.isLoading = true
-               _this.$element.find('.loading').show()
+            //    if(_this.isLoading) return
+            //    _this.isLoading = true
+            //    _this.$element.find('.loading').show()
                $.ajax({
                    url:'http://api.douban.com/v2/movie/us_box',
                    data:{
