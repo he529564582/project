@@ -190,6 +190,59 @@
   </footer>
 </body>
    <script>
+
+       var helpers = {
+            isToBottom: function(){
+               return this.$element.height()+this.$element.scrollTop()+10 >= this.$element.find('.container').height()
+           },
+           createdNode: function(movie){
+            var tpl = `<div class="item">
+                    <a href="#">
+                        <div class="cover">
+                            <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
+                        </div>
+                        <div class="detail">
+                            <h2></h2>
+                            <div class="extra">
+                                <ul>
+                                    <li><span class="score"></span>分 / <span class="collect-count"></span>收藏<li>
+                                    <li><span class="year"></span>年 / <span class="type"></span><li>
+                                    <li>导演：<span class="directors"></span></li>
+                                    <li>演员：<span class="actors"></span></li>  
+                                <ul>
+                            </div>  
+                        </div>     
+                    </a>
+                </div>`
+                var $node = $(tpl)
+                $node.find('.cover img').attr('src',movie.images.small)
+                $node.find('.detail h2').text(movie.title)
+                $node.find('.score').text(movie.rating.average)
+                $node.find('.detail .collect-count').text(movie.collect_count)
+                $node.find('.detail .year').text(movie.year)
+                $node.find('.detail .type').text(movie.genres.join('、'))
+                //豆瓣API directors是个数组，同actors需要遍历
+                $node.find('.detail .directors').text(function(){
+                    var directorsArr = []
+                    movie.directors.forEach(function(e){
+                        directorsArr.push(e.name)
+                    })
+                    return directorsArr.join('、')
+                })
+                $node.find('.detail .actors').text(function(){
+                    var actorArr =[]
+                    movie.casts.forEach(function(e){
+                        actorArr.push(e.name)
+                    })
+                    return actorArr.join('、')
+                })
+                return $node
+           }
+       }
+
+
+
+
        var top250 ={
            init:function(){
                this.$element = $('#top250')
@@ -240,52 +293,11 @@
            render:function(data){
                var _this = this
                data.subjects.forEach(function(movie){
-                var tpl = `<div class="item">
-                    <a href="#">
-                        <div class="cover">
-                            <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
-                        </div>
-                        <div class="detail">
-                            <h2></h2>
-                            <div class="extra">
-                                <ul>
-                                    <li><span class="score"></span>分 / <span class="collect-count"></span>收藏<li>
-                                    <li><span class="year"></span>年 / <span class="type"></span><li>
-                                    <li>导演：<span class="directors"></span></li>
-                                    <li>演员：<span class="actors"></span></li>  
-                                <ul>
-                            </div>  
-                        </div>     
-                    </a>
-                </div>`
-                var $node = $(tpl)
-                $node.find('.cover img').attr('src',movie.images.small)
-                $node.find('.detail h2').text(movie.title)
-                $node.find('.score').text(movie.rating.average)
-                $node.find('.detail .collect-count').text(movie.collect_count)
-                $node.find('.detail .year').text(movie.year)
-                $node.find('.detail .type').text(movie.genres.join('、'))
-                //豆瓣API directors是个数组，同actors需要遍历
-                $node.find('.detail .directors').text(function(){
-                    var directorsArr = []
-                    movie.directors.forEach(function(e){
-                        directorsArr.push(e.name)
-                    })
-                    return directorsArr.join('、')
-                })
-                $node.find('.detail .actors').text(function(){
-                    var actorArr =[]
-                    movie.casts.forEach(function(e){
-                        actorArr.push(e.name)
-                    })
-                    return actorArr.join('、')
-                })
+                var $node =helpers.createdNode(movie)
                 _this.$element.find('.container').append($node)
                })
            },
-           toBottom:function(){
-            return this.$element.find('.container').height() <= this.$element.height()+this.$element.scrollTop()+10
-           }
+           
        }
 
         var us = {
@@ -325,47 +337,7 @@
            render:function(data){
                var _this = this
                data.subjects.forEach(function(movie){
-                movie = movie.subject
-                var tpl = `<div class="item">
-                    <a href="#">
-                        <div class="cover">
-                            <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
-                        </div>
-                        <div class="detail">
-                            <h2></h2>
-                            <div class="extra">
-                                <ul>
-                                    <li><span class="score"></span>分 / <span class="collect-count"></span>收藏<li>
-                                    <li><span class="year"></span>年 / <span class="type"></span><li>
-                                    <li>导演：<span class="directors"></span></li>
-                                    <li>演员：<span class="actors"></span></li>  
-                                <ul>
-                            </div>  
-                        </div>     
-                    </a>
-                </div>`
-                var $node = $(tpl)
-                $node.find('.cover img').attr('src',movie.images.small)
-                $node.find('.detail h2').text(movie.title)
-                $node.find('.score').text(movie.rating.average)
-                $node.find('.detail .collect-count').text(movie.collect_count)
-                $node.find('.detail .year').text(movie.year)
-                $node.find('.detail .type').text(movie.genres.join('、'))
-                //豆瓣API directors是个数组，同actors需要遍历
-                $node.find('.detail .directors').text(function(){
-                    var directorsArr = []
-                    movie.directors.forEach(function(e){
-                        directorsArr.push(e.name)
-                    })
-                    return directorsArr.join('、')
-                })
-                $node.find('.detail .actors').text(function(){
-                    var actorArr =[]
-                    movie.casts.forEach(function(e){
-                        actorArr.push(e.name)
-                    })
-                    return actorArr.join('、')
-                })
+                var $node =helpers.createdNode(movie.subject)
                 _this.$element.find('.container').append($node)
                })
            }   
@@ -414,46 +386,7 @@
            render:function(data){
                var _this = this
                data.subjects.forEach(function(movie){
-                var tpl = `<div class="item">
-                    <a href="#">
-                        <div class="cover">
-                            <img src="http://img3.doubanio.com/view/photo/s_ratio_poster/public/p524964016.jpg" alt="">
-                        </div>
-                        <div class="detail">
-                            <h2></h2>
-                            <div class="extra">
-                                <ul>
-                                    <li><span class="score"></span>分 / <span class="collect-count"></span>收藏<li>
-                                    <li><span class="year"></span>年 / <span class="type"></span><li>
-                                    <li>导演：<span class="directors"></span></li>
-                                    <li>演员：<span class="actors"></span></li>  
-                                <ul>
-                            </div>  
-                        </div>     
-                    </a>
-                </div>`
-                var $node = $(tpl)
-                $node.find('.cover img').attr('src',movie.images.small)
-                $node.find('.detail h2').text(movie.title)
-                $node.find('.score').text(movie.rating.average)
-                $node.find('.detail .collect-count').text(movie.collect_count)
-                $node.find('.detail .year').text(movie.year)
-                $node.find('.detail .type').text(movie.genres.join('、'))
-                //豆瓣API directors是个数组，同actors需要遍历
-                $node.find('.detail .directors').text(function(){
-                    var directorsArr = []
-                    movie.directors.forEach(function(e){
-                        directorsArr.push(e.name)
-                    })
-                    return directorsArr.join('、')
-                })
-                $node.find('.detail .actors').text(function(){
-                    var actorArr =[]
-                    movie.casts.forEach(function(e){
-                        actorArr.push(e.name)
-                    })
-                    return actorArr.join('、')
-                })
+                var $node = helpers.createdNode(movie)
                 _this.$element.find('.container').append($node)
               })
             }
