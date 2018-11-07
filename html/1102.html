@@ -375,7 +375,9 @@
                    dataType:'jsonp'
                }).done(function(ret){
                     console.log(ret);
-                  callback&&callback(ret)
+                    if(callback){
+                        callback(ret)
+                    }
                }).fail(function(){
                    console.log('数据异常')
                }).always(function(){
