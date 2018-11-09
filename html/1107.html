@@ -196,7 +196,7 @@
 
         var helpers = {
             isToButtom:function(){
-                return this.$element.height()+this.$element.scrollTop()+10 >= this.$element.find('container').height()
+                return this.$element.find('.container').height() <= this.$element.height()+this.$element.scrollTop()+10
             },
             createdNode:function(movie){
                 var tpl = `<div class="item">
@@ -217,11 +217,11 @@
                         </div>     
                     </a>
                 </div>`
-                $node = $(tpl)
-                $node.find('.cover img').attr('src',movie.images.medium)
-                $ndoe.find('.detail h2').text(movie.title)
+                var $node = $(tpl)
+                $node.find('.cover img').attr('src',movie.images.small)
+                $node.find('.detail h2').text(movie.title)
                 $node.find('.score').text(movie.rating.average)
-                $node.find('.collect-count').text(movie.collect-count)
+                $node.find('.collect-count').text(movie.collect)
                 $node.find('.year').text(movie.year)
                 $node.find('.type').text(movie.genres.join('、'))
                 $node.find('.directors').text(function(){
@@ -233,7 +233,7 @@
                 })
                 $node.find('.actors').text(function(){
                     var actorsArr = []
-                    movie.actors.forEach(function(e){
+                    movie.casts.forEach(function(e){
                         actorsArr.push(e.name)
                     })
                     return actorsArr.join('、')
@@ -241,6 +241,213 @@
                 return $node
             }
         }
+
+
+
+
+        //top250
+        var top250 = {
+            init:function(){
+               this.$element = $('#top250') 
+               this.isLoading = false
+               this.isfinish = false
+               this.index = 0
+               this.bind()
+               this.start()
+            },
+            bind:function(){
+                var _this = this
+                this.$element.scroll(function(){
+                    _this.start()
+                })
+            },
+            start:function(){
+                var _this = this
+                this.getData(function(data){
+                    _this.render(data)
+                })
+            },
+            getData:function(callback){
+                var _this = this
+                if(_this.isLoading){
+                    _this.$element.find('.loading').show()
+                }
+                $.ajax({
+                    url:'http://api.douban.com/v2/movie/top250',
+                    data:{
+                        start:_this.index ||0
+                    },
+                    dataType:'jsonp'
+                }).done(function(ret){
+                    console.log(ret)
+                    _this.index += 20
+                    if(_this.index >= ret.total){
+                        _this.index = true
+                    }
+                    if(callback){
+                        callback(ret)
+                    }
+                }).fail(function(){
+                    console.log('数据异常')
+                }).always(function(){
+                    if(_this.isLoading = false){
+                        _this.$element.find('.loading').hide()
+                    }
+                })
+            },
+            render:function(data){
+                var _this = this
+                data.subjects.forEach(function(movie){
+                    $node =  helpers.createdNode(movie)
+                  _this.$element.find('.container').append($node)
+                })
+            }
+        }
         
+
+
+            // us
+         var us = {
+            init:function(){
+               this.$element = $('#us') 
+            //    this.isLoading = false
+            //    this.isfinish = false
+            //    this.index = 0
+            //    this.bind()
+               this.start()
+               this.keyword= ''
+            },
+            // bind:function(){
+            //     var _this = this
+            //     this.$element.find('.button').on('click',function(){
+            //         _this.keyword = _this.$element.find('input').val()
+            //         _this.start()
+            //     })
+            // },
+            start:function(){
+                var _this = this
+                this.getData(function(data){
+                    _this.render(data)
+                })
+            },
+            getData:function(callback){
+                var _this = this
+                if(_this.isLoading){
+                    _this.$element.find('.loading').show()
+                }
+                $.ajax({
+                    url:'http://api.douban.com/v2/movie/us_box',
+                    data:{
+                        start:_this.index ||0
+                    },
+                    dataType:'jsonp'
+                }).done(function(ret){
+                    console.log(ret)
+                    _this.index += 20
+                    if(_this.index >= ret.total){
+                        _this.index = true
+                    }
+                    if(callback){
+                        callback(ret)
+                    }
+                }).fail(function(){
+                    console.log('数据异常')
+                }).always(function(){
+                    if(_this.isLoading = false){
+                        _this.$element.find('.loading').hide()
+                    }
+                })
+            },
+            render:function(data){
+                var _this = this
+                data.subjects.forEach(function(movie){
+                    $node =  helpers.createdNode(movie.subject)
+                  _this.$element.find('.container').append($node)
+                })
+            }
+        }
+        
+        // search
+     var search = {
+            init:function(){
+               this.$element = $('#search') 
+               this.bind()
+               this.start()
+               this.keyword= ''
+            //    this.isLoading = false
+            //    this.isfinish = false
+            //    this.index = 0
+            //    this.bind()
+               this.start()
+            },
+            bind:function(){
+                var _this = this
+                this.$element.find('.button').on('click',function(){
+                    _this.keyword = _this.$element.find('input').val()
+                    _this.start()
+                })
+            },
+            start:function(){
+                var _this = this
+                this.getData(function(data){
+                    _this.render(data)
+                })
+            },
+            getData:function(callback){
+                var _this = this
+                // if(_this.isLoading){
+                //     _this.$element.find('.loading').show()
+                // }
+                $.ajax({
+                    url:'http://api.douban.com/v2/movie/search',
+                    data:{
+                        q:_this.keyword
+                    },
+                    dataType:'jsonp'
+                }).done(function(ret){
+                    console.log(ret)
+                    // _this.index += 20
+                    // if(_this.index >= ret.total){
+                    //     _this.index = true
+                    // }
+                    if(callback){
+                        callback(ret)
+                    }
+                }).fail(function(){
+                    console.log('数据异常')
+                }).always(function(){
+                    // if(_this.isLoading = false){
+                    //     _this.$element.find('.loading').hide()
+                    // }
+                })
+            },
+            render:function(data){
+                var _this = this
+                data.subjects.forEach(function(movie){
+                    $node =  helpers.createdNode(movie)
+                  _this.$element.find('.container').append($node)
+                })
+            }
+        }
+
+
+        var app = {
+            init:function(){
+                this.$tabs = $('footer>div')
+                this.$panels = $('section')
+                this.bind()
+                top250.init()
+                us.init()
+                search.init()
+            },
+            bind:function(){
+                var _this = this
+                this.$tabs.on('click',function(){
+                    $(this).addClass('active').siblings().removeClass('active')
+                    _this.$panels.eq($(this).index()).fadeIn().siblings().hide()
+                })
+            }
+        }
+        app.init()
     </script>    
 </html>

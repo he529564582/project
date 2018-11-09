@@ -254,10 +254,11 @@
                 this.$element = $('#top250')
                 this.isLoading = false
                 this.isfinish = false
+                this.index = 0
                 this.bind()
                 this.start()
             },
-            start:function(){
+            start:function(){ 
                 var _this= this
                 this.getData(function(data){
                     _this.render(data)
@@ -283,7 +284,7 @@
                 }).done(function(ret){
                     console.log(ret)
                     _this.index += 20
-                    if(_this.index>=ret.total){
+                    if(_this.index >= ret.total){
                         _this.isfinish= true
                     }
                     if(callback){
