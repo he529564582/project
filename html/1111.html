@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="//code.jquery.com/jquery-1.9.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* .waterfall {
+         width: 600px;
+        margin: 0 auto;
+        } */
+        .waterfall img{
+        width: 100px;
+        margin: 1px;
+        position: absolute;
+        transition: all .2s;
+        }
+    </style>
+</head>
+<body>
+    <div class="waterfall">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x70" alt="300*70">
+        <img src="http://via.placeholder.com/100x150" alt="300*150">
+        <img src="http://via.placeholder.com/100x250" alt="300*250">
+        <img src="http://via.placeholder.com/100x80" alt="300*80">
+        <img src="http://via.placeholder.com/100x90" alt="300*90">
+        <img src="http://via.placeholder.com/100x120" alt="300*120">
+        <img src="http://via.placeholder.com/100x210" alt="300*210">
+        <img src="http://via.placeholder.com/100x230" alt="300*230">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x70" alt="300*70">
+        <img src="http://via.placeholder.com/100x150" alt="300*150">
+        <img src="http://via.placeholder.com/100x250" alt="300*250">
+        <img src="http://via.placeholder.com/100x80" alt="300*80">
+        <img src="http://via.placeholder.com/100x90" alt="300*90">
+        <img src="http://via.placeholder.com/100x120" alt="300*120">
+        <img src="http://via.placeholder.com/100x210" alt="300*210">
+        <img src="http://via.placeholder.com/100x230" alt="300*230">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x70" alt="300*70">
+        <img src="http://via.placeholder.com/100x150" alt="300*150">
+        <img src="http://via.placeholder.com/100x250" alt="300*250">
+        <img src="http://via.placeholder.com/100x80" alt="300*80">
+        <img src="http://via.placeholder.com/100x90" alt="300*90">
+        <img src="http://via.placeholder.com/100x120" alt="300*120">
+        <img src="http://via.placeholder.com/100x210" alt="300*210">
+        <img src="http://via.placeholder.com/100x230" alt="300*230">
+        <img src="http://via.placeholder.com/100x100" alt="300*100">
+        <img src="http://via.placeholder.com/100x70" alt="300*70">
+        <img src="http://via.placeholder.com/100x150" alt="300*150">
+        <img src="http://via.placeholder.com/100x250" alt="300*250">
+        <img src="http://via.placeholder.com/100x80" alt="300*80">
+        <img src="http://via.placeholder.com/100x90" alt="300*90">
+        <img src="http://via.placeholder.com/100x120" alt="300*120">
+        <img src="http://via.placeholder.com/100x210" alt="300*210">
+        <img src="http://via.placeholder.com/100x230" alt="300*230">
+    </div>
+</body>
+<script>
+    var colCount        // 列数
+    var colheightArray = []     //列高度数组
+    var imgWidth = $('.waterfall img').outerWidth(true)
+    colCount = Math.floor($('.waterfall').width()/$('.waterfall img').outerWidth(true))
+    for(i=0;i<colCount;i++){
+        colheightArray[i] =0
+    }
+    $('.waterfall img').on('load',function(){
+        minValue = colheightArray[0]
+        minIndex = 0
+        for(i=0;i<colCount;i++){
+            if(colheightArray[i] < minValue){
+                minValue = colheightArray[i]
+                minIndex = i
+            }
+        }
+        $(this).css({
+            left: minIndex * imgWidth,
+            top: minValue,
+        })
+        colheightArray[minIndex] += $(this).outerHeight(true)
+    })
+</script>
+</html>
