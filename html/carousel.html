@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="http://at.alicdn.com/t/font_1171928_0wmia9526fl.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration:none;
+        }
+        .carousel {
+            position: relative;
+            overflow: hidden;
+            width: 400px;
+            height: 250px;
+            top:50px;
+            left: 50%;
+            transform: translate(-50%);
+        }
+        .carousel .img-ct {
+            width:1600px;
+            position: absolute;
+        }
+        .carousel .img-ct img {
+            width:400px;
+            height: 250px;
+            /* border-radius: 1%; */
+        }
+        .carousel .img-ct>li {
+            float: left;
+        }
+        .carousel .iconfont {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            /* border: 1px  solid #fff; */
+            top: 50%;
+            margin-top: -x;
+            color: #fff;
+            line-height: 30px;
+            text-align: center;
+            font-size: 30px;
+        }
+        
+        .carousel .iconfont:hover {
+            color: rgba(0, 0, 0, 0.5)
+        }
+        .carousel .icon-arrow-r {
+            right: 10px;
+        }
+        .carousel .icon-arrow-l {
+            left: 10px;
+        }
+        .carousel .bullet {
+            position: absolute;
+            z-index: 1;
+            text-align: center;
+            width: 100%;
+            top: 90%;
+        }
+        .carousel .bullet>li {
+            display: inline-block;
+            width: 30px;
+            height: 10px;
+            border:1px solid #ccc;
+            cursor: pointer;
+            margin: 0 3px;
+        }
+        .carousel .bullet>li.active {
+            background: #bbded6;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="carousel">
+        <ul class="img-ct">
+            <li data-id="0"><a href="#"><img src="https://dummyimage.com/600x400/0bded7/fff&text=1" alt="1"></a></li>
+            <li data-id="1"><a href="#"><img src="https://dummyimage.com/600x400/0bded7/fff&text=2" alt="2"></a></li>
+            <li data-id="2"><a href="#"><img src="https://dummyimage.com/600x400/0bded7/fff&text=3" alt="3"></a></li>
+            <li data-id="3"><a href="#"><img src="https://dummyimage.com/600x400/0bded7/fff&text=4" alt="4"></a></li>
+        </ul>
+            <a href="#" class=" iconfont icon-arrow-r"></a>
+            <a href="#" class=" iconfont icon-arrow-l"></a>
+        <ul class="bullet"> 
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+       function Carousel($ct){
+        this.$ct = $ct;
+        this.init();
+        this.bind();
+        this.pageIndex = 0;
+        this.isAnimate = false;
+      }
+      Carousel.prototype.init = function(){
+        this.$prebtn = this.$ct.find('.icon-arrow-l');
+        this.$nextbtn = this.$ct.find('.icon-arrow-r');
+        this.$imgCt = this.$ct.find('.img-ct');
+        this.$imgs = this.$ct.find('.img-ct>li');
+        this.$bullets = this.$ct.find('.bullet li');
+
+        this.$imgCount = this.$imgs.length;
+        this.$imgWidth =  this.$imgs.width();
+        this.$imgCt.append(this.$imgs.first().clone());
+        this.$imgCt.prepend(this.$imgs.last().clone());
+        this.$imgCt.width((this.$imgCount + 2) * this.$imgWidth);
+        this.$imgCt.css({left: -this.$imgWidth});
+      }
+      Carousel.prototype.bind = function(){
+        var _this = this;
+        this.$prebtn.on('click',function(){
+          _this.playPre(1);
+        });
+        this.$nextbtn.on('click',function(){
+          _this.playNext(1);
+        });
+        this.$bullets.on('click',function(){
+          _this.$bullets.removeClass('active');
+          $(this).addClass('active');
+          var index = $(this).index();
+          
+          if(index > _this.pageIndex){
+            _this.playNext(index - _this.pageIndex);
+          }
+          if(index < _this.pageIndex){
+            _this.playPre(_this.pageIndex - index);
+          }
+        })
+      }
+      Carousel.prototype.playPre = function(len){
+        if(this.isAnimate)  return;
+        this.isAnimate = true;
+        var _this = this;
+        this.$imgCt.animate({
+          left: '+=' + len*_this.$imgWidth
+        },function(){
+          _this.pageIndex-=len;
+          if(_this.pageIndex < 0){
+            _this.pageIndex = 3;
+            _this.$imgCt.css({left:-(_this.$imgCount)*_this.$imgWidth});
+          }
+          _this.setBullet();
+          _this.isAnimate = false;
+        });
+      }
+      Carousel.prototype.playNext = function(len){
+        var _this = this;
+        if(this.isanimate)  return;
+        this.isanimate = true;
+        this.$imgCt.animate({
+          left: '-=' + len*_this.$imgWidth
+        },function(){
+          _this.pageIndex+=len;
+          if(_this.pageIndex > 3){
+            _this.pageIndex = 0;
+            _this.$imgCt.css({left:-_this.$imgWidth});
+          }
+          _this.setBullet();
+          _this.isanimate = false;
+        });
+      }
+      Carousel.prototype.setBullet = function(){
+        this.$bullets.removeClass('active')
+                .eq(this.pageIndex).addClass('active');
+      }
+      Carousel.prototype.autoPlay =  function(){
+          var _this = this
+          this.authClock = setInterval(function(){
+              _this.playNext(1)
+          },1000)
+      }
+      Carousel.prototype.autoStop = function(){
+          clearInterval(this.authClock)
+      }
+      var carousel = (function(){
+        return {
+          init: function($ct){
+            $ct.each(function(index,node){
+              new Carousel($(node));
+            })
+          }
+        }
+      })()
+      carousel.init($('.carousel'));
+ 
+    </script>
+</body>
+</html>
