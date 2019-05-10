@@ -13,8 +13,48 @@
             var type = opts.type || 'GET'
             var dataType = opts.dataType || 'json'
             var data = opts.data || {}
-            var dataSt
-        }    
+            var dataStr = []
+            for(key in data){
+                dataStr.push(key + '=' + data[key])
+            }
+            dataStr = dataStr.join('&')
+            if(type ==='GET'){
+                url += '?' + dataStr
+            }
+            var promise = new Promise(function(resolve,reject){
+                var xhr = new XMLHttpRequest()
+                xhr.open(type,url,true)
+                xhr.onload = function(){
+                    if((xhr.status >= 200 && xhr.status < 300) ||xhr.status == 304){
+                        if(dataType === 'json'){
+                            var ret = (JSON.parse(xhr.responseText))
+                            resolve(ret)
+                        }else{
+                            var ret = (xhr.responseText)
+                            resolve (ret)
+                        }
+                    }else{
+                        reject()
+                    }
+                }
+                if(type === 'POST'){
+                    xhr.sent(dataStr)
+                }else{
+                    xhe.send()
+                }
+            })
+            return promise;
+        }   
+        ajax({
+            url:'http://api.jirengu.com/weather/php',
+            data:{
+                city: 'beijing'
+            }
+        }) .then(function(ret){
+            console.log(ret)
+        }).catch(function(){
+            console.log('error')
+        })
     </script>
 </body>
 </html>
