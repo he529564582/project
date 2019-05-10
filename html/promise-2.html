@@ -4,51 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>promise-1</title>
+    <title>Document</title>
 </head>
 <body>
     <script>
         function ajax(opts) {
-            var type = opts.type || 'GET'
             var url = opts.url
-            var data = opts.data|| {}
-            var dataType = opts.dataType || 'JSON'
-            var dataStr = []
+            var type = opts.type || 'GET'
+            var data = opts.data || {}
+            var dataType = opts.dataType || 'json'
+            var dataStr = opts.dataStr || []
             if(key in data){
-                dataStr.push(key + '=' + data[key])
+                dataStr.push (key + '=' + data[key])
             }
             dataStr = dataStr.join('&')
-            if(type === 'GET'){
+            if(type  === 'GET'){
                 url += '?' + dataStr
             }
             var promise = new Promise(function(resolve,reject){
                 var xhr = new XMLHttpRequest()
-                xhr.open(type,url,true)
+                xhr.open(type, url,true)
                 xhr.onload = function(){
-                    if((xhr.status >= 200 && xhe.status <300) || xhr.status == 304){
-                        if(dataType == 'JSON'){
-                            var ret = (JSON.parse(xhr.responseText))
-                            resolve(ret)
-                        }else{
-                            var ret = (xhr.responseText)
-                            resolve(ret)
-                        }
+                    if((xhr.status >= 200 || xhr.status <300) || xhr.status == 304){
+                         if(dataType == 'json'){
+                             var ret = (JSON.parse(xhr.responseText))
+                             resolve(ret)
+                         }else{
+                             var ret = (xhr.responseText)
+                             resolve(ret)
+                         }
                     }else{
                         reject()
                     }
                 }
-                if(type === "POSt"){
+                if(type === 'POST'){
                     xhr.send(dataStr)
                 }else{
                     xhr.send()
                 }
             })
             return promise;
-        }
-        ajax({
-            url:'http://api.jirengu.com/weather/php',
+        }    
+        axja({
+            url :'http://api.jirengu.com/weather/php',
             data:{
-                city: 'beijing'
+                city:'beijing'
             }
         }).then(function(ret){
             console.log(ret)
