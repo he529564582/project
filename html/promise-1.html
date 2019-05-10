@@ -4,53 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>promise</title>
+    <title>promise-1</title>
 </head>
 <body>
     <script>
         function ajax(opts) {
-            var url = opts.url
             var type = opts.type || 'GET'
-            var dataType = opts.dataType || 'json'
-            var data = opts.data || {}
+            var url = opts.url
+            var data = opts.data|| {}
+            var dataType = opts.dataType || 'JSON'
             var dataStr = []
-            for(key in data){
+            if(ken in data){
                 dataStr.push(key + '=' + data[key])
             }
             dataStr = dataStr.join('&')
-            if(type ==='GET'){
+            if(type === 'GET'){
                 url += '?' + dataStr
             }
             var promise = new Promise(function(resolve,reject){
                 var xhr = new XMLHttpRequest()
                 xhr.open(type,url,true)
                 xhr.onload = function(){
-                    if((xhr.status >= 200 && xhr.status < 300) ||xhr.status == 304){
-                        if(dataType === 'json'){
+                    if((xhr.status >= 200 && xhe.status <300) || xhr.status == 304){
+                        if(dataType == 'JSON'){
                             var ret = (JSON.parse(xhr.responseText))
                             resolve(ret)
                         }else{
                             var ret = (xhr.responseText)
-                            resolve (ret)
+                            resolve(ret)
                         }
                     }else{
                         reject()
                     }
                 }
-                if(type === 'POST'){
+                if(type === "POSt"){
                     xhr.send(dataStr)
                 }else{
                     xhr.send()
                 }
             })
             return promise;
-        }   
+        }
         ajax({
             url:'http://api.jirengu.com/weather/php',
             data:{
                 city: 'beijing'
             }
-        }) .then(function(ret){
+        }).then(function(ret){
             console.log(ret)
         }).catch(function(){
             console.log('error')
