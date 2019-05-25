@@ -12,16 +12,32 @@
         padding: 0;
         border-sizing:border-box;
     }
+    a{
+        text-decoration: none;
+        color:slategrey;
+    }
+    header{
+        border:paleturquoise 1px solid;
+    }
     .logo{
         height: 100px;
         width: 100px;
         background: paleturquoise;
         border-radius:50%;
         float: left;
+        text-align: center;
+        line-height: 100px;
     }
-    .nav div{
+    .nav>div{
         float: right;
-        margin-left: 20px;
+        border-left:1px skyblue solid;
+        
+        line-height: 24px;
+        padding: 38px 0;
+        font-size: 24px;
+    }
+    .nav>div>a:hover{
+        background: violet;
     }
     .clearfix::after{
         content:'';
@@ -31,13 +47,13 @@
 </style>
 <body>
     <header class="clearfix">
-        <div class="logo"></div>
+        <div class="logo">logo</div>
         <div class="nav clearfix">
-            <div>导航1</div>
-            <div>导航2</div>
-            <div>导航3</div>
-            <div>导航4</div>
-            <div>导航5</div>
+            <div><a href="#">导航1</a></div>
+            <div><a href="#">导航2</a></div>
+            <div><a href="#">导航3</a></div>
+            <div><a href="#">导航4</a></div>
+            <div><a href="#">导航5</a></div>
         </div>
     </header>
 </body>
