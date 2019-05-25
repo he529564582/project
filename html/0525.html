@@ -45,6 +45,41 @@
         display: flex;
         justify-content: space-between;
     }
+    header >button{
+        border-radius:10%;
+        width: 40px;
+        height: 30px;
+        border:1px black solid;
+        position: absolute;
+        right: 40px;
+        top: 40px;
+    }
+    .nav2{
+        display: none;
+        
+    }
+    @media(min-width:451px){
+        header >button{
+            display: none;
+        }
+        .nav2{
+            display: block;
+            background: green;
+        display: flex;
+        justify-content: space-between;
+            
+        }
+        header{
+            display: flex;
+            align-items: center;
+        }
+        header .nav2{
+            display: flex;
+        }
+        .nav,.nav.active{
+            display: none;
+        }
+    }
 </style>
 <body>
     <header>
@@ -56,6 +91,13 @@
             <a href="#"><li>选项3</li></a>
             <a href="#"><li>选项4</li></a>
             <a href="#"><li>选项5</li></a>
+        </ul>
+        <ul class="nav2">
+                <a href="#"><li>选项1</li></a>
+                <a href="#"><li>选项2</li></a>
+                <a href="#"><li>选项3</li></a>
+                <a href="#"><li>选项4</li></a>
+                <a href="#"><li>选项5</li></a>
         </ul>
     </header>
 </body>
