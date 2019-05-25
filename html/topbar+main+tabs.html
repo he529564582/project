@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color:black;
+        }
+        .container {
+            display:flex;
+            height: 100vh;
+            flex-direction: column;
+        }
+        header{
+            height: 100px;
+            background: #ddd;
+        }
+        footer{
+            height: 100px;
+            background: #aaa;
+        }
+        main{
+            flex-grow: 1;
+        }
+        ul{
+            list-style: none;
+            display: flex;
+            flex-direction: row;
+            height: 100%;
+        }
+         a{
+            width: 25%;
+            
+            border: 1px red solid;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>header</header>
+        <main>main</main>
+        <footer>
+            <ul>
+                <a href="#"><li>1</li></a>
+                <a href="#"><li>2</li></a>
+                <a href="#"><li>3</li></a>
+                <a href="#"><li>4</li></a>
+            </ul>
+        </footer>
+    </div>
+</body>
+</html>
