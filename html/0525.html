@@ -11,6 +11,14 @@
         padding: 0;
         margin: 0;
     }
+    ul{
+        list-style-type: none;
+    }
+    a{
+        color: black;
+        text-decoration: none;
+        font-size: 20px;
+    }
     .logo{
         height: 100px;
         width: 100px;
@@ -21,15 +29,21 @@
         position: relative;
     }
     #xx{
+        border-radius:10%;
+        width: 40px;
+        height: 30px;
+        border:1px black solid;
         position: absolute;
-        right: 0;
-        top: 0;
+        right: 40px;
+        top: 40px;
     }
     .nav{
         display: none;
     }
     .nav.active{
-        display: block;
+        background: purple;
+        display: flex;
+        justify-content: space-between;
     }
 </style>
 <body>
@@ -37,11 +51,11 @@
         <div class="logo"></div>
         <button id="xx">菜单</button>
         <ul id="yy" class="nav">
-            <li>选项1</li>
-            <li>选项2</li>
-            <li>选项3</li>
-            <li>选项4</li>
-            <li>选项5</li>
+            <a href="#"><li>选项1</li></a>
+            <a href="#"><li>选项2</li></a>
+            <a href="#"><li>选项3</li></a>
+            <a href="#"><li>选项4</li></a>
+            <a href="#"><li>选项5</li></a>
         </ul>
     </header>
 </body>
