@@ -26,6 +26,9 @@
         top: 0;
     }
     .nav{
+        display: none;
+    }
+    .nav.active{
         display: block;
     }
 </style>
@@ -33,7 +36,7 @@
     <header>
         <div class="logo"></div>
         <button id="xx">菜单</button>
-        <ul class="nav">
+        <ul id="yy" class="nav">
             <li>选项1</li>
             <li>选项2</li>
             <li>选项3</li>
@@ -42,4 +45,9 @@
         </ul>
     </header>
 </body>
+<script>
+    xx.onclick = function(){
+        yy.classList.toggle('active')
+    }
+</script>
 </html>
