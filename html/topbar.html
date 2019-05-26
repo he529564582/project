@@ -47,6 +47,32 @@
         display: block;
         clear:both;
     }
+    .banner{
+        width: 800px;
+        height: 400px;
+        margin: 10px auto 0 auto;
+        background-color: #888;
+    }
+    .pictures{
+        width: 800px;
+        margin: 0 auto;
+        background-color: greenyellow;
+    }
+    .picture{
+        float: left;
+        width: 194px;
+        height: 194px;
+        background: purple;
+        margin: 4px;
+        
+        
+    }
+    .picture:nth-child(4n+1){
+        margin-left: 0;
+    }
+    .picture:nth-child(4n){
+        margin-right: 0;
+    }
 </style>
 <body>
     <header class="clearfix">
@@ -59,5 +85,16 @@
             <div><a href="#">导航5</a></div>
         </div>
     </header>
+    <div class="banner"></div>
+    <div class="pictures clearfix">
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+        <div class="picture"></div>
+    </div>
 </body>
 </html>
