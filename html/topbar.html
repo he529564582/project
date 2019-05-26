@@ -73,6 +73,24 @@
     .picture:nth-child(4n){
         margin-right: 0;
     }
+    .art{
+        width: 800px;
+        
+        margin: 0 auto;
+    }
+    .art >.sider{
+        height: 300px;
+        width: 33.33%;
+        float: left;
+        background:lightslategray;
+    }
+    .art >.main{
+        height: 300px;
+        width: 66.66%;
+        float: left;
+        background:lightblue;
+        
+    }
 </style>
 <body>
     <header class="clearfix">
@@ -95,6 +113,10 @@
         <div class="picture"></div>
         <div class="picture"></div>
         <div class="picture"></div>
+    </div>
+    <div class="art clearfix">
+        <div class="sider"></div>
+        <div class="main"></div>
     </div>
 </body>
 </html>
