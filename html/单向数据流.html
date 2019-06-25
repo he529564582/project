@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #app>div{
+            margin-bottom: 50px;
+            border:1px solid
+        }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div>
+            <p>将传递进来的数据通过初始值保存起来</p>
+            <child1 :value2="value1"></child1>
+        </div>
+        <div>
+                <p>将传递进来的数据通过计算属性进行重新计算</p>
+                <input type="text" v-model="width">
+                <child2 :width="width"></child1>
+            </div>
+    </div>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                value1:'将父组件的数据传递进来，并在子组件中用props接收,放在data中',
+                width:'0'
+            },
+            components:{
+                child1:{
+                    props:['value2'],
+                    template:'<div>{{count}}</div>',
+                    data(){
+                        return {
+                            count:this.value2
+                        }
+                    }
+                },
+                child2:{
+                    props:['width'],
+                    template:'<div :style="style">{{width}}</div>',
+                    // data(){
+                    //     return {
+                    //         count:this.value2
+                    //     }
+                    // },
+                    computed:{
+                        style(){
+                            return {
+                                width: this.width +'px',
+                                height:'50px',
+                                background:'red'
+                            }
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>
