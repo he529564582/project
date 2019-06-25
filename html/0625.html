@@ -1,34 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
 <body>
+    <div id="app">
+            <child1 ref="x"></child1>
+            <child2 ref="y"></child2>
+            <child3 ref="z"></child3>
+            <button @click="getChildDate">获取子组件的data</button>
+    </div>
     <script>
-        function myFunction(){
-            var x ="";
-            var time =new Date().getHours();
-            if(time<10){
-                document.write("a");
+        var app = new Vue({
+            el:"#app",
+            data:{
+                keys:'apple',
+                bus:new Vue()
+            },
+            methods:{
+                getChildDate(){
+                    alert(this.$refs.x.msg)
+                    alert(this.$refs.y.msg)
+                    alert(this.$refs.z.msg)
+                }
+            },
+            components:{
+                'child1':{
+                    data(){
+                        return {
+                            msg:"来自A组件的消息"
+                        }
+                    },
+                    template:'<div><button @click="handle">点击我向B组件传递消息</button></div>',
+                    methods:{
+                        handle(){
+                            this.$root.bus.$emit('aaa',this.msg)
+                        }
+                    }
+                },
+                'child2':{
+                    data(){
+                        return {
+                            msg:"来自B组件的消息"
+                        }
+                    },
+                    created(){
+                        this.$root.bus.$on('aaa',function(value){
+                            alert(value)
+                        })
+                    },
+                    template:'<div></div>',
+                    methods:{
+                        // handle(){
+                        //     this.$root.bus.$emit('aaa',this.msg)
+                        // }
+                    }
+                },
+                'child3':{
+                    data(){
+                        return {
+                            msg:"来自C组件的消息"
+                        }
+                    },
+                    created(){
+                        this.$root.bus.$on('aaa',function(value){
+                            alert(value)
+                        })
+                    },
+                    template:'<div><button @click="getFatherData">获取父组件data</button></div>',
+                    methods:{
+                        getFatherData(){
+                            alert(this.$parent.keys)
+                        }
+                    }
+                }
             }
-            else if(time<18){
-                document.write("b");
-            }
-            else{
-                document.write("c");
-            }
-            document.getElementById("demo").innerHTML=x;
-
-        }
+        })
     </script>
-
-<p>点击这个按钮，获得基于时间的问候。</p>
-
-<button onclick="myFunction()">点击这里</button>
-
-<p id="demo"></p>
 </body>
 </html>
