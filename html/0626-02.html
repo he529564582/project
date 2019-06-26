@@ -4,22 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <title>Document</title>
 </head>
 <body>
-        <p>点击下面的按钮，只要 i 小于 5 就一直循环代码块。</p>
-        <button onclick="myFunction()">点击这里</button>
-        <p id="demo"></p>
+    <div id="app">
+        <childa></childa>
+        <childb></childb>
+    </div>
     <script>
-        function myFunction(){
-            var x ="";
-            var i = 0;
-            while(i<5){
-                x=x+i+"<br>";
-                i++;
+        var app = new Vue({
+            el:"#app",
+            data:{
+                bus:new Vue()
+            },
+            components:{
+                childa:{
+                    data(){
+                        return {
+                            msg:'这是来自组件A的内容'
+                        }
+                    },
+                    template:'<div><button @click=event>event</button></div>',
+                    methods:{
+                        event(){
+                            this.$root.bus.$emit('xxx',this.msg)
+                        }
+                    }
+
+                },
+                childb:{
+                    template:'<div></div>',
+                    created(){
+                        this.$root.bus.$on('xxx',function(value){
+                            alert(value);
+                        })
+                    }
+                }
             }
-            document.getElementById("demo").innerHTML=x;
-        }
+        })
     </script>
 </body>
 </html>
