@@ -3,17 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>父链：this.$parent</title>
 </head>
 <body>
+    <div id="app">
+        <child></child>
+    </div>
     <script>
-        cars=["A","B","C"];
-        var i = 0;
-        while(cars[i]){
-            document.write(cars[i]+"<br>");
-            i++;
-        }
+        var app = new Vue({
+            el:"#app",
+            data:{
+                msg:'通过父链：this.$parent获取父组件消息ABC'
+            },
+            components:{
+                child:{
+                    methods:{
+                        getFatherDate(){
+                            alert(this.$parent.msg)
+                        }
+                    },
+                    template:'<div><button @click=getFatherDate>getFatherDate</button></div>'
+                }
+            }
+        })
     </script>
 </body>
 </html>
