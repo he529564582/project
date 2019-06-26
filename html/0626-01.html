@@ -3,23 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>自定义事件—子组件给父组件传递数据</title>
 </head>
 <body>
-        <p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
-        <button onclick="myFunction()">点击这里</button>
-        <p id="demo"></p>
+    <div id="app">
+        <span>{{total}}</span>
+        <child @change="handleall"></child>
+    </div>
     <script>
-        function myFunction(){
-            var x;
-            var txt ="";
-            var person=["A","B","C"];
-            for(x in person){
-                txt=txt+person[x];
+        var app = new Vue({
+            el:"#app",
+            data:{
+                total:0
+            },
+            components:{
+                'child':{
+                    template:'<div><button @click="handleadd">+ 1000</button></div>',
+                    data(){
+                        return {
+                            count:0
+                        }
+                    },
+                    methods:{
+                        handleadd(){
+                            this.count = this.count + 1000
+                            this.$emit('change',this.count)
+                        }
+                    }
+                }
+            },methods:{
+                handleall(value){
+                    this.total = value
+                }
             }
-            document.getElementById("demo").innerHTML=txt;
-        }      
+        })
     </script>
 </body>
 </html>

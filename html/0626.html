@@ -3,23 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>在组件中使用v­-model</title>
 </head>
 <body>
-        <p>点击下面的按钮，循环遍历对象 "person" 的属性。</p>
-        <button onclick="myFunction()">点击这里</button>
-        <p id="demo"></p>
+    <div id="app">
+        <span>{{total}}</span>
+        <child v-model="total"></child>
+    </div>
     <script>
-        function myFunction(){
-            var x;
-            var txt = "";
-            var ponson ={A:"a",A:"a",A:"a"};
-            for( x in ponson){
-                txt = txt + ponson[x];
-            }
-            document.getElementById("demo").innerHTML=txt;
-        }
+       var app = new Vue({
+           el:"#app",
+           data:{
+            total:0
+           },
+           components:{
+               'child':{
+                    template:'<div><button @click="handel">+1000</button></div>',
+                    data(){
+                        return {
+                            value:0
+                        }
+                    },
+                    methods:{
+                        handel(){
+                            this.value = this.value + 1000
+                            this.$emit('input',this.value)
+                        }
+                    }
+               }
+           }
+       })
     </script>
 </body>
 </html>
